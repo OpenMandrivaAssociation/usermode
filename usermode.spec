@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.85
-Release:	%mkrel 4
+Release:	%mkrel 5
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -14,7 +14,7 @@ BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils libice-devel libsm-devel
 Source0:	usermode-%{version}.tar.bz2
 # extra translations
-Source3:	usermode-pofiles.tar.bz2
+#Source3:	usermode-pofiles.tar.bz2
 Source4:	userpasswd16.xpm.bz2
 Source5:	userpasswd32.xpm.bz2
 Source6:	userpasswd48.xpm.bz2
@@ -86,7 +86,7 @@ done
 rm -f $RPM_BUILD_ROOT%{_bindir}/shutdown
 
 # install extra po files
-bzcat %{SOURCE3} | tar xf -
+#bzcat %{SOURCE3} | tar xf -
 
 for i in po/*.po ; do
   mkdir -p $RPM_BUILD_ROOT/%{_datadir}/locale/`basename $i .po`/LC_MESSAGES
@@ -176,4 +176,3 @@ rm -rf $RPM_BUILD_ROOT
 %config(missingok,noreplace) %{_sysconfdir}/security/console.apps/halt
 %config(missingok,noreplace) %{_sysconfdir}/security/console.apps/reboot
 %config(missingok,noreplace) %{_sysconfdir}/security/console.apps/poweroff
-
