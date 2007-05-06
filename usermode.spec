@@ -89,22 +89,6 @@ rm -f $RPM_BUILD_ROOT%{_bindir}/shutdown
 # install extra po files
 #bzcat %{SOURCE3} | tar xf -
 
-for i in po/*.po ; do
-  mkdir -p $RPM_BUILD_ROOT/%{_datadir}/locale/`basename $i .po`/LC_MESSAGES
-  msgfmt -v -o $RPM_BUILD_ROOT/%{_datadir}/locale/`basename $i .po`/LC_MESSAGES/%{name}.mo $i || :
-done
-# 'zh' alone is wrong
-[ -d  $RPM_BUILD_ROOT/%{_datadir}/locale/zh ] && \
-	rm -rf $RPM_BUILD_ROOT/%{_datadir}/locale/zh
-# "zh_??.encoding" are replaced with "zh_??"
-[ -d  $RPM_BUILD_ROOT/%{_datadir}/locale/zh_CN.GB2312 ] && \
-	rm -rf $RPM_BUILD_ROOT/%{_datadir}/locale/zh_CN.GB2312
-[ -d  $RPM_BUILD_ROOT/%{_datadir}/locale/zh_TW.Big5 ] && \
-	rm -rf $RPM_BUILD_ROOT/%{_datadir}/locale/zh_TW.Big5
-# eu_ES is bad file
-[ -d  $RPM_BUILD_ROOT/%{_datadir}/locale/eu_ES ] && \
-	rm -rf $RPM_BUILD_ROOT/%{_datadir}/locale/eu_ES
-
 bzcat %{SOURCE10} > $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/simple_root_authen
 
 # menu 
