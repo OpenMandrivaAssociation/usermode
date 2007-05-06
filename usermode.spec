@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.85
-Release:	%mkrel 5
+Version:	1.91
+Release:	%mkrel 1
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
