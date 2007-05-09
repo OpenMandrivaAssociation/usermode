@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.91
-Release:	%mkrel 1
+Version:	1.85
+Release:	%mkrel 5
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -20,14 +20,13 @@ Source5:	userpasswd32.xpm.bz2
 Source6:	userpasswd48.xpm.bz2
 Source10:	simple_root_authen.bz2
 # allow more environment variables to be set in root environment
-Patch1:		usermode-1.91-environment.patch
+Patch1:		usermode-1.85-environment.patch
 # allow simple authentication without config file (used by drakxtools)
-Patch2:		usermode-1.91-simple_authen.patch
+Patch2:		usermode-1.85-simple_authen.patch
 # (fc) 1.63-10mdk convert entry text to current locale, don't keep it utf-8
 Patch5:		usermode-1.63-utf8.patch
 # (fc) 1.85-1mdk fix tray icon transparency
-# fwang: There is no such file anymore
-# Patch6:		usermode-1.85-transparency.patch
+Patch6:		usermode-1.85-transparency.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.85-stick.patch
 
@@ -60,7 +59,7 @@ XFree or GTK to run.
 %patch1 -p1 -b .environment
 %patch2 -p1 -b .user_authen
 %patch5 -p1 -b .utf8
-#%patch6 -p1 -b .transparency
+%patch6 -p1 -b .transparency
 %patch7 -p1 -b .stick
 # (blino) remove unsupported categories from desktop files
 perl -pi -e 's/.*--add-category (AdvancedSettings|Application).*\n//' Makefile*
@@ -85,9 +84,6 @@ for wrapapp in halt reboot poweroff ; do
   cp shutdown.pamd $RPM_BUILD_ROOT%{_sysconfdir}/pam.d/$wrapapp
 done
 rm -f $RPM_BUILD_ROOT%{_bindir}/shutdown
-
-# install extra po files
-#bzcat %{SOURCE3} | tar xf -
 
 bzcat %{SOURCE10} > $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/simple_root_authen
 
