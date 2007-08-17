@@ -12,6 +12,7 @@ BuildRequires:	libglade2.0-devel
 BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils libice-devel libsm-devel
+BuildRequires:  e2fsprogs-devel
 Source0:	usermode-%{version}.tar.bz2
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
@@ -50,7 +51,7 @@ XFree or GTK to run.
 %setup -q
 %patch1 -p1 -b .environment
 %patch2 -p1 -b .user_authen
-#patch7 -p1 -b .stick
+%patch7 -p1 -b .stick
 
 %build
 %configure2_5x 
