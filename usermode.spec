@@ -52,6 +52,8 @@ XFree or GTK to run.
 %patch1 -p1 -b .environment
 %patch2 -p1 -b .user_authen
 %patch7 -p1 -b .stick
+# (blino) remove Icon extension in desktop files
+perl -pi -e 's/^(Icon=.*)\.png$/$1/' *.desktop.in
 
 %build
 %configure2_5x 
