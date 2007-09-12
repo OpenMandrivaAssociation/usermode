@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.92
-Release:	%mkrel 3
+Release:	%mkrel 4
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -14,6 +14,10 @@ BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils libice-devel libsm-devel
 BuildRequires:  e2fsprogs-devel
 Source0:	usermode-%{version}.tar.bz2
+# being the console owner is enough
+Source1:        mandriva-console-auth
+# besides being the console owner, needs to authenticate as well
+Source2:        mandriva-simple-auth
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
@@ -80,7 +84,8 @@ rm -f $RPM_BUILD_ROOT%{_bindir}/shutdown
 
 install -m 644 %{SOURCE10} $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/simple_root_authen
 install -m 644 %{SOURCE11} $RPM_BUILD_ROOT/%{_sysconfdir}/security/console.apps/simple_root_authen
-
+install -m 644 %{SOURCE1} $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/mandriva-console-auth
+install -m 644 %{SOURCE2} $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/mandriva-simple-auth
 
 %find_lang %{name}
 
@@ -127,6 +132,8 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %{_sysconfdir}/pam.d/reboot
 %config(noreplace) %{_sysconfdir}/pam.d/poweroff
 %config(noreplace) %{_sysconfdir}/pam.d/simple_root_authen
+%config(noreplace) %{_sysconfdir}/pam.d/mandriva-simple-auth
+%config(noreplace) %{_sysconfdir}/pam.d/mandriva-console-auth
 %config(missingok,noreplace) %{_sysconfdir}/security/console.apps/halt
 %config(missingok,noreplace) %{_sysconfdir}/security/console.apps/reboot
 %config(missingok,noreplace) %{_sysconfdir}/security/console.apps/poweroff
