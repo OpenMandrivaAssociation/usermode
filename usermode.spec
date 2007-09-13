@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.92
-Release:	%mkrel 4
+Release:	%mkrel 5
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -28,6 +28,7 @@ Patch2:		usermode-1.92-user_authen.patch
 Patch3:         usermode-1.92-add-uz-i18n.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.92-stick.patch
+Patch8:		usermode.po.patch
 
 Requires:	util-linux 
 Requires:	pam >= 0.75-28mdk
@@ -59,6 +60,7 @@ XFree or GTK to run.
 %patch2 -p1 -b .user_authen
 %patch3 -p1 -b .uz
 %patch7 -p1 -b .stick
+%patch8 -p1
 # (blino) remove Icon extension in desktop files
 perl -pi -e 's/^(Icon=.*)\.png$/$1/' *.desktop.in
 
