@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.92
-Release:	%mkrel 5
+Release:	%mkrel 6
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -26,6 +26,8 @@ Patch1:		usermode-1.92-environment.patch
 Patch2:		usermode-1.92-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:         usermode-1.92-add-uz-i18n.patch
+# http://qa.mandriva.com/show_bug.cgi?id=33827
+Patch4:		usermode-1.92-add-he-i18n.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.92-stick.patch
 Patch8:		usermode.po.patch
@@ -59,6 +61,7 @@ XFree or GTK to run.
 %patch1 -p1 -b .environment
 %patch2 -p1 -b .user_authen
 %patch3 -p1 -b .uz
+%patch4 -p0 -b .he
 %patch7 -p1 -b .stick
 %patch8 -p1
 # (blino) remove Icon extension in desktop files
