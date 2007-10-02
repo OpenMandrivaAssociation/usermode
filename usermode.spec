@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.92
-Release:	%mkrel 6
+Release:	%mkrel 7
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -20,6 +20,8 @@ Source1:        mandriva-console-auth
 Source2:        mandriva-simple-auth
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
+# From Marek Laane <bald@starman.ee>
+Source12:       usermode-et.po
 # allow more environment variables to be set in root environment
 Patch1:		usermode-1.92-environment.patch
 # allow simple authentication without config file (used by drakxtools)
@@ -66,6 +68,8 @@ XFree or GTK to run.
 %patch8 -p1
 # (blino) remove Icon extension in desktop files
 perl -pi -e 's/^(Icon=.*)\.png$/$1/' *.desktop.in
+rm -f po/et.po
+install -m 0644 %{SOURCE12} po/et.po
 
 %build
 %configure2_5x 
