@@ -38,7 +38,6 @@ Requires:	util-linux
 Requires:	pam >= 0.75-28mdk
 Requires:	%{name}-consoleonly = %{epoch}:%{version}-%{release}
 Conflicts:	SysVinit < 2.74-14 msec < 0.15-17mdk
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The usermode package contains several graphical tools for users:
