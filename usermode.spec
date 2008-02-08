@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.92
-Release:	%mkrel 7
+Version:	1.94
+Release:	%mkrel 1
 Epoch:		1
 License:	GPL
 Group:		System/Configuration/Other
@@ -12,6 +12,8 @@ BuildRequires:	libglade2.0-devel
 BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils libice-devel libsm-devel
+# don't build with startup-notification for now, not fully functionnal
+#BuildRequires:  startup-notification-devel
 BuildRequires:  e2fsprogs-devel
 Source0:	usermode-%{version}.tar.bz2
 # being the console owner is enough
@@ -20,16 +22,12 @@ Source1:        mandriva-console-auth
 Source2:        mandriva-simple-auth
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
-# From Marek Laane <bald@starman.ee>
-Source12:       usermode-et.po
 # allow more environment variables to be set in root environment
 Patch1:		usermode-1.92-environment.patch
 # allow simple authentication without config file (used by drakxtools)
 Patch2:		usermode-1.92-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:         usermode-1.92-add-uz-i18n.patch
-# http://qa.mandriva.com/show_bug.cgi?id=33827
-Patch4:		usermode-1.92-add-he-i18n.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.92-stick.patch
 Patch8:		usermode.po.patch
@@ -63,16 +61,13 @@ XFree or GTK to run.
 %patch1 -p1 -b .environment
 %patch2 -p1 -b .user_authen
 %patch3 -p1 -b .uz
-%patch4 -p0 -b .he
 %patch7 -p1 -b .stick
-%patch8 -p1
+%patch8 -p1 -b .newpo
 # (blino) remove Icon extension in desktop files
 perl -pi -e 's/^(Icon=.*)\.png$/$1/' *.desktop.in
-rm -f po/et.po
-install -m 0644 %{SOURCE12} po/et.po
 
 %build
-%configure2_5x 
+%configure2_5x
 %make 
 
 %install
