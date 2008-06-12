@@ -101,10 +101,14 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/locale/*/LC_MESSAGES/@GETTEXT_PACKAGE@.mo \
 if [ ! -z "$SECURE_LEVEL" ];then
 if [ -x /usr/sbin/msec -a "$SECURE_LEVEL" -gt "3" ]; then  /usr/sbin/msec $SECURE_LEVEL || true ; fi
 fi
+%if %mdkversion < 200900
 %update_menus
+%endif
 
+%if %mdkversion < 200900
 %postun
 %clean_menus
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
