@@ -1,10 +1,11 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.94
-Release:	%mkrel 2
+Version:	1.98
+Release:	%mkrel 1
 Epoch:		1
-License:	GPL
+License:	GPLv2+
 Group:		System/Configuration/Other
+Url:		https://fedorahosted.org/usermode/
 BuildRequires:	autoconf2.5
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
@@ -15,7 +16,7 @@ BuildRequires:	desktop-file-utils libice-devel libsm-devel
 # don't build with startup-notification for now, not fully functionnal
 #BuildRequires:  startup-notification-devel
 BuildRequires:  e2fsprogs-devel
-Source0:	usermode-%{version}.tar.bz2
+Source0:	https://fedorahosted.org/releases/u/s/usermode/usermode-%{version}.tar.bz2
 # being the console owner is enough
 Source1:        mandriva-console-auth
 # besides being the console owner, needs to authenticate as well
@@ -25,11 +26,11 @@ Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
 Patch1:		usermode-1.92-environment.patch
 # allow simple authentication without config file (used by drakxtools)
-Patch2:		usermode-1.92-user_authen.patch
+Patch2:		usermode-1.98-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:         usermode-1.92-add-uz-i18n.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
-Patch7:		usermode-1.92-stick.patch
+Patch7:		usermode-1.98-stick.patch
 Patch8:		usermode.po.patch
 
 Requires:	util-linux 
@@ -63,8 +64,6 @@ XFree or GTK to run.
 %patch3 -p1 -b .uz
 %patch7 -p1 -b .stick
 %patch8 -p1 -b .newpo
-# (blino) remove Icon extension in desktop files
-perl -pi -e 's/^(Icon=.*)\.png$/$1/' *.desktop.in
 
 %build
 %configure2_5x
