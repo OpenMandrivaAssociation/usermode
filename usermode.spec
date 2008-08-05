@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.98
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -90,6 +90,20 @@ install -m 644 %{SOURCE11} $RPM_BUILD_ROOT/%{_sysconfdir}/security/console.apps/
 install -m 644 %{SOURCE1} $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/mandriva-console-auth
 install -m 644 %{SOURCE2} $RPM_BUILD_ROOT/%{_sysconfdir}/pam.d/mandriva-simple-auth
 
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart
+cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
+[Desktop Entry]
+Name=Authentication applet
+Comment=Allow to forget authenticated login
+Exec=pam-panel-icon
+Icon=dialog-password
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=GNOME;GTK;System;Utility;Core;
+OnlyShowIn=GNOME;
+EOF
+
 %find_lang %{name}
 
 # remove unpackaged files
@@ -114,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
+%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
 %{_bindir}/usermount
 %{_bindir}/userinfo
 %{_bindir}/userpasswd
