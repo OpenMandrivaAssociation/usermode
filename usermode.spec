@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.98
-Release:	%mkrel 2
+Release:	%mkrel 3
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -24,7 +24,7 @@ Source2:        mandriva-simple-auth
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
-Patch1:		usermode-1.92-environment.patch
+Patch1:		usermode-1.98-environment.patch
 # allow simple authentication without config file (used by drakxtools)
 Patch2:		usermode-1.98-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
