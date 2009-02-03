@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.98
-Release:	%mkrel 5
+Version:	1.99
+Release:	%mkrel 1
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -14,14 +14,15 @@ Source2:	mandriva-simple-auth
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
-Patch1:		usermode-1.98-environment.patch
+Patch1:		usermode-1.99-environment.patch
 # allow simple authentication without config file (used by drakxtools)
-Patch2:		usermode-1.98-user_authen.patch
+Patch2:		usermode-1.99-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:		usermode-1.92-add-uz-i18n.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
-Patch7:		usermode-1.98-stick.patch
-Patch8:	usermode.po.patch
+Patch7:		usermode-1.99-stick.patch
+Patch8:		usermode.po.patch
+Patch9:		usermode-1.99-format_not_a_string_literal_and_no_format_arguments.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
@@ -31,6 +32,7 @@ BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	libice-devel
 BuildRequires:	libsm-devel
+BuildRequires:	startup-notification-devel
 # don't build with startup-notification for now, not fully functionnal
 #BuildRequires:  startup-notification-devel
 BuildRequires:	e2fsprogs-devel
@@ -60,11 +62,13 @@ XFree or GTK to run.
 
 %prep
 %setup -q
+
 %patch1 -p1 -b .environment
 %patch2 -p1 -b .user_authen
 %patch3 -p1 -b .uz
 %patch7 -p1 -b .stick
 %patch8 -p1 -b .newpo
+%patch9 -p1
 
 %build
 %configure2_5x
@@ -102,7 +106,7 @@ Terminal=false
 StartupNotify=false
 Type=Application
 Categories=GNOME;GTK;System;Utility;Core;
-OnlyShowIn=GNOME;XFCE;
+OnlyShowIn=GNOME;
 EOF
 
 %find_lang %{name}
