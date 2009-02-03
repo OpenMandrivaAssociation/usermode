@@ -18,10 +18,10 @@ Patch1:		usermode-1.99-environment.patch
 # allow simple authentication without config file (used by drakxtools)
 Patch2:		usermode-1.99-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
-Patch3:		usermode-1.92-add-uz-i18n.patch
+Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.99-stick.patch
-Patch8:		usermode.po.patch
+Patch8:		usermode-1.99-sl-po.patch
 Patch9:		usermode-1.99-format_not_a_string_literal_and_no_format_arguments.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	gettext-devel
