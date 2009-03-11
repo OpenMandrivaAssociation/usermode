@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.99
-Release:	%mkrel 2
+Release:	%mkrel 3
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -106,7 +106,7 @@ Terminal=false
 StartupNotify=false
 Type=Application
 Categories=GNOME;GTK;System;Utility;Core;
-OnlyShowIn=GNOME;
+OnlyShowIn=GNOME;KDE;
 EOF
 
 %find_lang %{name}
