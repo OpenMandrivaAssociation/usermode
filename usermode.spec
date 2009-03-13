@@ -23,6 +23,10 @@ Patch3:		usermode-1.99-uz-po.patch
 Patch7:		usermode-1.99-stick.patch
 Patch8:		usermode-1.99-sl-po.patch
 Patch9:		usermode-1.99-format_not_a_string_literal_and_no_format_arguments.patch
+# (tpg) pam-panel-icon should check whether it is started from autostart or saved session
+# without this we have more instances of pam-panel-icon running
+# https://qa.mandriva.com/show_bug.cgi?id=44632
+Patch10:	usermode-1.99-disable-session-restart.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
@@ -69,6 +73,7 @@ XFree or GTK to run.
 %patch7 -p1 -b .stick
 %patch8 -p1 -b .newpo
 %patch9 -p1
+%patch10 -p1
 
 %build
 %configure2_5x
@@ -106,7 +111,7 @@ Terminal=false
 StartupNotify=false
 Type=Application
 Categories=GNOME;GTK;System;Utility;Core;
-OnlyShowIn=GNOME;KDE;
+OnlyShowIn=GNOME;KDE;XFCE;
 EOF
 
 %find_lang %{name}
