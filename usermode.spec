@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.99
-Release:	%mkrel 5
+Version:	1.100
+Release:	%mkrel 1
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -21,7 +21,7 @@ Patch2:		usermode-1.99-user_authen.patch
 Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.99-stick.patch
-Patch8:		usermode-1.99-sl-po.patch
+Patch8:		usermode-1.100-sl-po.patch
 Patch9:		usermode-1.99-format_not_a_string_literal_and_no_format_arguments.patch
 # (tpg) pam-panel-icon should check whether it is started from autostart or saved session
 # without this we have more instances of pam-panel-icon running
