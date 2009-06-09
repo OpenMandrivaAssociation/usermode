@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.100
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -39,7 +39,7 @@ BuildRequires:	libsm-devel
 BuildRequires:	startup-notification-devel
 # don't build with startup-notification for now, not fully functionnal
 #BuildRequires:  startup-notification-devel
-BuildRequires:	e2fsprogs-devel
+BuildRequires:	libblkid-devel
 Requires:	util-linux 
 Requires:	pam >= 0.75-28mdk
 Requires:	%{name}-consoleonly = %{epoch}:%{version}-%{release}
