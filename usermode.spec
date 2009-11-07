@@ -1,6 +1,6 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.101
+Version:	1.102
 Release:	%mkrel 1
 Epoch:		1
 License:	GPLv2+
@@ -77,7 +77,7 @@ XFree or GTK to run.
 
 %build
 %configure2_5x
-%make 
+%make
 
 %install
 rm -rf %{buildroot}
