@@ -145,6 +145,8 @@ rm -rf %{buildroot}
 %{_mandir}/man1/usermount.1*
 %{_mandir}/man1/userinfo.1*
 %{_mandir}/man1/userpasswd.1*
+%{_mandir}/man1/pam-panel-icon.1*
+%{_mandir}/man8/consolehelper-gtk.8*
 %{_bindir}/consolehelper-gtk
 %{_bindir}/pam-panel-icon
 %{_datadir}/usermode
