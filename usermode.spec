@@ -1,12 +1,12 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.102
+Version:	1.106
 Release:	%mkrel 1
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		https://fedorahosted.org/usermode/
-Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.bz2
+Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
 # being the console owner is enough
 Source1:	mandriva-console-auth
 # besides being the console owner, needs to authenticate as well
@@ -16,13 +16,13 @@ Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
 Patch1:		usermode-1.99-environment.patch
 # allow simple authentication without config file (used by drakxtools)
-Patch2:		usermode-1.99-user_authen.patch
+Patch2:		usermode-1.106-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.101-stick.patch
 Patch8:		usermode-1.100-sl-po.patch
-Patch9:		usermode-1.99-format_not_a_string_literal_and_no_format_arguments.patch
+Patch9:		usermode-1.106-format_not_a_string_literal_and_no_format_arguments.patch
 # (tpg) pam-panel-icon should check whether it is started from autostart or saved session
 # without this we have more instances of pam-panel-icon running
 # https://qa.mandriva.com/show_bug.cgi?id=44632
@@ -40,7 +40,7 @@ BuildRequires:	startup-notification-devel
 # don't build with startup-notification for now, not fully functionnal
 #BuildRequires:  startup-notification-devel
 BuildRequires:	libblkid-devel
-Requires:	util-linux 
+Requires:	util-linux
 Requires:	pam >= 0.75-28mdk
 Requires:	%{name}-consoleonly = %{epoch}:%{version}-%{release}
 Conflicts:	SysVinit < 2.74-14
@@ -76,7 +76,8 @@ XFree or GTK to run.
 %patch10 -p1
 
 %build
-%configure2_5x
+%configure2_5x \
+	--without-selinux
 %make
 
 %install
