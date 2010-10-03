@@ -1,6 +1,6 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.106
+Version:	1.106.1
 Release:	%mkrel 1
 Epoch:		1
 License:	GPLv2+
