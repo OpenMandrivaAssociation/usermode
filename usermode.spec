@@ -1,6 +1,6 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.107
+Version:	1.108
 Release:	%mkrel 1
 Epoch:		1
 License:	GPLv2+
@@ -16,7 +16,7 @@ Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
 Patch1:		usermode-1.99-environment.patch
 # allow simple authentication without config file (used by drakxtools)
-Patch2:		usermode-1.106-user_authen.patch
+Patch2:		usermode-1.108-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
