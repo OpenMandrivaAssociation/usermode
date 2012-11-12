@@ -1,0 +1,80 @@
+diff -Naur usermode-1.108/userhelper-wrap.c usermode-1.108.tpg/userhelper-wrap.c
+--- usermode-1.108/userhelper-wrap.c	2011-10-03 15:51:45.000000000 +0000
++++ usermode-1.108.tpg/userhelper-wrap.c	2011-11-15 18:13:40.000000000 +0000
+@@ -693,7 +693,7 @@
+ 
+ 		if (resp->responses == 0)
+ 			text = g_strdup("");
+-		else if (resp->service != NULL) {
++		else if (resp->service != NULL && strcmp(resp->service, "simple_root_authen")) {
+ 			if (strcmp(resp->service, "passwd") == 0)
+ 				text = g_strdup(_("Changing password."));
+ 			else if (strcmp(resp->service, "chfn") == 0)
+diff -Naur usermode-1.108/userhelper.c usermode-1.108.tpg/userhelper.c
+--- usermode-1.108/userhelper.c	2011-10-03 15:51:45.000000000 +0000
++++ usermode-1.108.tpg/userhelper.c	2011-11-15 18:21:25.000000000 +0000
+@@ -50,6 +50,8 @@
+ #include <selinux/av_permissions.h>
+ #endif
+ 
++static int simple_root_authen = 0;
++
+ #include "shvar.h"
+ #include "userhelper.h"
+ #include "userhelper-messages.h"
+@@ -584,7 +586,7 @@
+ 		if ((data->banner != NULL) && (data->domain != NULL)) {
+ 			text = g_strdup_printf(dgettext(data->domain, data->banner));
+ 		} else {
+-			if ((service != NULL) && (strlen(service) > 0)) {
++			if ((service != NULL) && (strlen(service) > 0) && strcmp(service, "simple_root_authen")) {
+ 				if (data->fallback_allowed) {
+ 					text = g_strdup_printf(_("You are attempting to run \"%s\" which may benefit from administrative\nprivileges, but more information is needed in order to do so."), service);
+ 				} else {
+@@ -1518,7 +1520,21 @@
+ 	    (sbuf.st_mode & S_IWOTH)) {
+ 		debug_msg("userhelper: bad file permissions: %s \n",
+ 			  apps_filename);
+-		die(data, ERR_UNK_ERROR);
++ 		/* fall back to simple auth */
++ 	 	simple_root_authen = 1;
++ 		g_free (apps_filename);
++ 		if (s != NULL) 
++ 			svCloseFile(s);
++ 		apps_filename = g_strconcat(SYSCONFDIR "/security/console.apps/", "simple_root_authen", NULL);
++ 		s = svNewFile(apps_filename);
++ 		if ((s == NULL) ||
++ 		    (fstat(s->fd, &sbuf) == -1) ||
++ 		    !S_ISREG(sbuf.st_mode) ||
++ 		    (sbuf.st_mode & S_IWOTH)) {
++	 		debug_msg("userhelper: bad file permissions: %s \n",
++ 				apps_filename);
++	  		die(data, ERR_UNK_ERROR);
++ 		}
+ 	}
+ 	g_free(apps_filename);
+ 
+@@ -1711,7 +1727,7 @@
+ 
+ 	/* If the user we're authenticating as has root's UID, then it's
+ 	 * safe to let them use HOME=~root. */
+-	if (pwd->pw_uid == 0)
++	if (pwd->pw_uid == 0 && !simple_root_authen)
+ 		setenv("HOME", pwd->pw_dir, 1);
+ 	else {
+ 		/* Otherwise, if they had a reasonable value for HOME, let them
+@@ -1775,7 +1791,13 @@
+ 	svCloseFile(s);
+ 
+ 	/* Start up PAM to authenticate the specified user. */
+-	retval = pam_start(program, user_pam, data->conv, &data->pamh);
++	if (simple_root_authen) {
++		retval = pam_start("simple_root_authen", user_pam, data->conv,&data->pamh);
++	} else {
++		retval = pam_start(program, user_pam, data->conv, &data->pamh);
++
++	}
++
+ 	if (retval != PAM_SUCCESS) {
+ 		debug_msg("userhelper: pam_start() failed\n");
+ 		fail_exit(data, retval);

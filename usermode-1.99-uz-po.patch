@@ -1,0 +1,1058 @@
+diff -Naur usermode-1.99/po/LINGUAS usermode-1.99.tpg/po/LINGUAS
+--- usermode-1.99/po/LINGUAS	2008-11-11 11:40:38.000000000 +0000
++++ usermode-1.99.tpg/po/LINGUAS	2009-02-03 22:35:16.000000000 +0000
+@@ -57,6 +57,8 @@
+ tg
+ tr
+ uk
++uz
++uz@Latn
+ vi
+ zh_CN
+ zh_TW
+diff -Naur usermode-1.99/po/uz.po usermode-1.99.tpg/po/uz.po
+--- usermode-1.99/po/uz.po	1970-01-01 00:00:00.000000000 +0000
++++ usermode-1.99.tpg/po/uz.po	2009-02-03 22:35:48.000000000 +0000
+@@ -0,0 +1,519 @@
++# translation of uz.po to Uzbek
++# ###
++# ### Cyrilic version atuomatically built from the latin one;
++# ### Needs proofreading!
++# ###
++#
++# Latest versions of po files are at http://www.mandrakelinux.com/l10n/uz@Cyrl.php3
++#
++# Support for Uzbek language in usermode.
++# This file is distributed under the same license as the usermode package.
++#
++# Mashrab Kuvatov <kmashrab@uni-bremen.de>, 2003, 2007.
++msgid ""
++msgstr ""
++"Project-Id-Version: uz\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2007-08-20 16:57+0200\n"
++"PO-Revision-Date: 2007-09-08 01:51+0200\n"
++"Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
++"Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++"X-Generator: KBabel 1.11.4\n"
++
++#.
++#. * Copyright (C) 2001 Red Hat, Inc.
++#. *
++#. * This is free software; you can redistribute it and/or modify it
++#. * under the terms of the GNU General Public License as published by
++#. * the Free Software Foundation; either version 2 of the License, or
++#. * (at your option) any later version.
++#. *
++#. * This program is distributed in the hope that it will be useful, but
++#. * WITHOUT ANY WARRANTY; without even the implied warranty of
++#. * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++#. * General Public License for more details.
++#. *
++#. * You should have received a copy of the GNU General Public License
++#. * along with this program; if not, write to the Free Software
++#. * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++#.
++#. Just a dummy file for gettext, containing messages emmitted by various
++#. * commonly-used PAM modules.
++#: ../dummy.h:21
++msgid "OK"
++msgstr "Ок"
++
++#: ../dummy.h:22
++msgid "Exit"
++msgstr "Чиқиш"
++
++#: ../dummy.h:23
++msgid "Cancel"
++msgstr "Бекор қилиш"
++
++#: ../dummy.h:24
++msgid "Run Unprivileged"
++msgstr "Оддий бажариш"
++
++#: ../dummy.h:25
++msgid "(current) UNIX password: "
++msgstr "(жорий) UNIX махфий сўзи: "
++
++#: ../dummy.h:26
++msgid "New UNIX password: "
++msgstr "Янги UNIX махфий сўзи: "
++
++#: ../dummy.h:27
++msgid "Retype new UNIX password: "
++msgstr "UNIX махфий сўзини бошқадан киритинг: "
++
++#: ../dummy.h:28
++msgid "BAD PASSWORD: it's WAY too short"
++msgstr "МАХФИЙ СЎЗИ ХАТО: у жуда ҳам қисқа"
++
++#: ../dummy.h:29
++msgid "BAD PASSWORD: it is too short"
++msgstr "МАХФИЙ СЎЗИ ХАТО: у жуда ҳам қисқа"
++
++#: ../dummy.h:30
++msgid "Password unchanged"
++msgstr "Махфий сўз ўзгармади"
++
++#: ../dummy.h:31
++msgid "Sorry, passwords do not match"
++msgstr "Узр, махфий сўзлар мос келмади"
++
++#: ../dummy.h:32
++msgid "Launch system-wide configuration tools without a password."
++msgstr ""
++
++#: ../dummy.h:33
++msgid "login: "
++msgstr ""
++
++#: ../dummy.h:34
++msgid "Password: "
++msgstr "Махфий сўз: "
++
++#: ../pam-panel-icon.c:89
++#, c-format
++msgid "Failed to drop administrator privileges: %s"
++msgstr ""
++
++#: ../pam-panel-icon.c:98
++#, c-format
++msgid ""
++"Failed to drop administrator privileges: pam_timestamp_check returned "
++"failure code %d"
++msgstr ""
++
++#: ../pam-panel-icon.c:146
++msgid ""
++"You're currently authorized to configure system-wide settings (that affect "
++"all users) without typing the administrator password again. You can give up "
++"this authorization."
++msgstr ""
++
++#: ../pam-panel-icon.c:151 ../pam-panel-icon.c:178
++msgid "Keep Authorization"
++msgstr ""
++
++#: ../pam-panel-icon.c:154 ../pam-panel-icon.c:185
++msgid "Forget Authorization"
++msgstr ""
++
++#: ../pam-panel-icon.c:285
++msgid "pam_timestamp_check is not setuid root"
++msgstr ""
++
++#: ../pam-panel-icon.c:289
++msgid "no controlling tty for pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:293
++msgid "user unknown to pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:297
++msgid "permissions error in pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:301
++msgid "invalid controlling tty in pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:319
++#, c-format
++msgid "Error: %s\n"
++msgstr "Хато: %s\n"
++
++#: ../pam-panel-icon.c:384
++#, c-format
++msgid "Failed to run command \"%s\": %s\n"
++msgstr "\"%s\" буйруғини бажариб бўлмади: %s\n"
++
++#: ../pam-panel-icon.c:396
++#, c-format
++msgid "Failed to set IO channel nonblocking: %s\n"
++msgstr ""
++
++#: ../pam-panel-icon.c:476
++msgid "pam-panel-icon: failed to connect to session manager\n"
++msgstr ""
++
++#: ../userhelper.c:201
++#, c-format
++msgid "Could not set default context for %s for program %s.\n"
++msgstr ""
++
++#: ../userhelper.c:212 ../userhelper.c:214
++#, c-format
++msgid "Could not set exec context to %s.\n"
++msgstr ""
++
++#: ../userhelper.c:803
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which may benefit from administrative\n"
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"\"%s\" буйруғини бажариш учун администраторнинг рухсати керак\n"
++"бўлиши мумкин. Бунинг учун қуйидаги маълумотни киритинг."
++
++#: ../userhelper.c:805
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which requires administrative\n"
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"\"%s\" буйруғини бажариш учун администраторнинг рухсати\n"
++"керак. Бунинг учун қуйидаги маълумотни киритинг."
++
++#: ../userhelper.c:809
++msgid ""
++"You are attempting to run a command which may benefit from\n"
++"administrative privileges, but more information is needed in order to do so."
++msgstr ""
++"Исталган амални бажариш учун администраторнинг рухсати керак\n"
++"бўлиши мумкин. Бунинг учун қуйидаги маълумотни киритинг."
++
++#: ../userhelper.c:811
++msgid ""
++"You are attempting to run a command which requires administrative\n"
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"Исталган амални бажариш учун администраторнинг рухсати\n"
++"керак. Бунинг учун қуйидаги маълумотни киритинг."
++
++#: ../userhelper.c:821 ../userhelper-wrap.c:753
++#, c-format
++msgid "Authenticating as \"%s\""
++msgstr "\"%s\" фойдаланувчининг махфий сўзини киритинг"
++
++#: ../userhelper.c:2368
++#, c-format
++msgid "userhelper must be setuid root\n"
++msgstr ""
++
++#. FIXME: print a warning here?
++#: ../userhelper.c:2466
++#, c-format
++msgid "Unable to open graphical window, and unable to find controlling terminal.\n"
++msgstr "График ойнани очиб бўлмади ва бошқарувчи терминални топиб бўлмади.\n"
++
++#: ../userhelper-wrap.c:203
++msgid "Unknown exit code."
++msgstr "Дастурнинг чиқиш коди номаълум."
++
++#: ../userhelper-wrap.c:205
++msgid "Information updated."
++msgstr "Маълумот янгиланди."
++
++#: ../userhelper-wrap.c:207
++msgid ""
++"The password you typed is invalid.\n"
++"Please try again."
++msgstr ""
++"Сиз киритган махфий сўз нотўғри.\n"
++"Илтимос яна уриниб кўринг."
++
++#: ../userhelper-wrap.c:209
++msgid ""
++"One or more of the changed fields is invalid.\n"
++"This is probably due to either colons or commas in one of the fields.\n"
++"Please remove those and try again."
++msgstr ""
++"Битта ёки бир нечта ўзгартирилган майдонларнинг қиймати нотўғри.\n"
++"Эҳтимол бунга \":\" ёки \",\" белгилари сабабчидир.\n"
++"Илтимос уларни олиб ташлаб яна уриниб кўринг."
++
++#: ../userhelper-wrap.c:211
++msgid "Password resetting error."
++msgstr "Махфий сўзни ўзгартиришда хато."
++
++#: ../userhelper-wrap.c:213
++msgid ""
++"Some systems files are locked.\n"
++"Please try again in a few moments."
++msgstr ""
++"Баъзи тизим файллари қулфланган.\n"
++"Илтимос бир оздан сўнг яна уриниб кўринг."
++
++#: ../userhelper-wrap.c:215
++msgid "Unknown user."
++msgstr "Номаълум фойдаланувчи."
++
++#: ../userhelper-wrap.c:217
++msgid "Insufficient rights."
++msgstr "Ҳуқуқлар етарлича эмас."
++
++#: ../userhelper-wrap.c:219
++msgid "Invalid call to subprocess."
++msgstr ""
++
++#: ../userhelper-wrap.c:221
++msgid ""
++"Your current shell is not listed in /etc/shells.\n"
++"You are not allowed to change your shell.\n"
++"Consult your system administrator."
++msgstr ""
++"Жорий консолингиз /etc/shells рўйхатида йўқ.\n"
++"Консолингизни ўзгартиришга сизга рухсат йўқ.\n"
++"Администраторга мурожаат қилинг."
++
++#: ../userhelper-wrap.c:224
++msgid "Out of memory."
++msgstr "Хотира етишмаяпти."
++
++#: ../userhelper-wrap.c:226
++msgid "The exec() call failed."
++msgstr "exec() функциясига мурожаат муваффақиятсиз тугади."
++
++#: ../userhelper-wrap.c:228
++msgid "Failed to find selected program."
++msgstr "Танланган дастурни топиш муваффақиятсиз тугади."
++
++#: ../userhelper-wrap.c:231
++msgid "Request canceled."
++msgstr ""
++
++#: ../userhelper-wrap.c:233
++msgid "Internal PAM error occured."
++msgstr "PAM ички хатоси рўй берди."
++
++#: ../userhelper-wrap.c:235
++msgid "Unknown error."
++msgstr "Номаълум хато."
++
++#: ../userhelper-wrap.c:503
++msgid "Query"
++msgstr "Сўров"
++
++#: ../userhelper-wrap.c:580 ../userhelper-wrap.c:732
++msgid "Error"
++msgstr "Хато"
++
++#: ../userhelper-wrap.c:580
++msgid "Information"
++msgstr "Маълумот"
++
++#: ../userhelper-wrap.c:724
++msgid "Placeholder text."
++msgstr ""
++
++#: ../userhelper-wrap.c:782
++msgid "Changing password."
++msgstr "Махфий сўзни ўзгартириш."
++
++#: ../userhelper-wrap.c:784
++msgid "Changing personal information."
++msgstr "Шахсий маълумот ўзгартирилмоқда."
++
++#: ../userhelper-wrap.c:787
++msgid "Changing login shell."
++msgstr ""
++
++#: ../userhelper-wrap.c:791
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which may benefit from administrative "
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"\"%s\" буйруғини бажариш учун администраторнинг рухсати керак бўлиши мумкин. "
++"Бунинг учун қуйидаги маълумотни киритинг."
++
++#: ../userhelper-wrap.c:793
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which requires administrative privileges, "
++"but more information is needed in order to do so."
++msgstr ""
++"\"%s\" буйруғини бажариш учун администраторнинг рухсати керак. Бунинг учун "
++"қуйидаги маълумотни киритинг."
++
++#: ../userhelper-wrap.c:798
++msgid ""
++"You are attempting to run a command which may benefit from administrative "
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"Исталган амални бажариш учун администраторнинг рухсати керак бўлиши мумкин. "
++"Бунинг учун қуйидаги маълумотни киритинг."
++
++#: ../userhelper-wrap.c:800
++msgid ""
++"You are attempting to run a command which requires administrative "
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"Исталган амални бажариш учун администраторнинг рухсати керак. Бунинг учун "
++"қуйидаги маълумотни киритинг."
++
++#: ../userhelper-wrap.c:810
++msgid "_Run Unprivileged"
++msgstr "_Оддий бажариш"
++
++#: ../userhelper-wrap.c:968
++#, c-format
++msgid "Pipe error.\n"
++msgstr ""
++
++#: ../userhelper-wrap.c:975
++#, c-format
++msgid "Cannot fork().\n"
++msgstr "fork() функциясини бажариб бўлмади.\n"
++
++#: ../userhelper-wrap.c:1001
++#, c-format
++msgid "Can't set charset %s on an IO channel: %s\n"
++msgstr ""
++
++#: ../userhelper-wrap.c:1077 ../userhelper-wrap.c:1081
++#, c-format
++msgid "dup2() error.\n"
++msgstr "dup2() функциясининг хатоси.\n"
++
++#: ../userhelper-wrap.c:1093
++#, c-format
++msgid "execl() error, errno=%d\n"
++msgstr "execl() функциясининг хатоси. Хато коди: %d\n"
++
++#: ../userinfo.c:370
++#, c-format
++msgid "Unexpected argument"
++msgstr ""
++
++#: ../userinfo.c:395
++#, c-format
++msgid "You don't exist.  Go away.\n"
++msgstr "Сиз мавжуд эмассиз!\n"
++
++#: ../usermount.c:61
++msgid "_Mount"
++msgstr "_Улаш"
++
++#: ../usermount.c:62
++msgid "Un_mount"
++msgstr "У_зиш"
++
++#: ../usermount.c:289
++msgid ""
++"Are you sure you want to format this disk?  You will destroy any data it "
++"currently contains."
++msgstr ""
++"Ростдан дискни формат қилишни истайсизми? Сиз ундаги барча маълумотни ўчириб "
++"юборасиз."
++
++#: ../usermount.c:300
++msgid "Perform a _low-level format."
++msgstr "_Паст даражали формат қилиш"
++
++#: ../usermount.c:337
++msgid "Select a _filesystem type to create:"
++msgstr "Яратиш учун _файл тизимини танланг:"
++
++#: ../usermount.c:507
++msgid ""
++"There are no filesystems which you are allowed to mount or unmount.\n"
++"Contact your administrator."
++msgstr ""
++"Сиз улаш ёки узиш ҳуқуқига эга бўлган файл тизимлар йўқ.\n"
++"Администраторга мурожаат қилинг."
++
++#. Create the dialog.
++#: ../usermount.c:508 ../usermount.c:520
++msgid "User Mount Tool"
++msgstr "Фойдаланувчи учун улаш/узиш воситаси"
++
++#. Create the other buttons.
++#: ../usermount.c:538
++msgid "_Format"
++msgstr "_Формат қилиш"
++
++#: ../usermount.c:574
++msgid "Device"
++msgstr "Ускуна"
++
++#: ../usermount.c:580
++msgid "Directory"
++msgstr "Директория"
++
++#: ../usermount.c:586
++msgid "Filesystem"
++msgstr "Файл тизими"
++
++#: ../usermount.c:633
++#, c-format
++msgid "The device '%s' can not be formatted."
++msgstr "'%s' ускунасини форматлаб бўлмайди."
++
++#: ../usermode.glade.h:1
++msgid "Full Name:"
++msgstr "Тўлиқ исми:"
++
++#: ../usermode.glade.h:2
++msgid "Home Phone Number:"
++msgstr "Уй телефони:"
++
++#: ../usermode.glade.h:3
++msgid "Login Shell:"
++msgstr "Кириш консоли:"
++
++#: ../usermode.glade.h:4
++msgid "Office Phone Number:"
++msgstr "Иш телефони:"
++
++#: ../usermode.glade.h:5
++msgid "Office:"
++msgstr "Хона:"
++
++#: ../usermode.glade.h:6
++msgid "User Information"
++msgstr "Фойдаланувчи ҳақида маълумот"
++
++#: ../userinfo.desktop.in.h:1
++msgid "About Myself"
++msgstr "Ўзим ҳақимда маълумот"
++
++#: ../userinfo.desktop.in.h:2
++msgid "Change personal information"
++msgstr "Шахсий маълумотни ўзгартириш"
++
++#: ../usermount.desktop.in.h:1
++msgid "Disk Management"
++msgstr "Диск бошқаруви"
++
++#: ../usermount.desktop.in.h:2
++msgid "Mount and unmount filesystems"
++msgstr "Файл тизимларини улаш ва узиш"
++
++#: ../userpasswd.desktop.in.h:1
++msgid "Change your login password"
++msgstr "Махфий сўзингизни ўзгартириш"
++
++#: ../userpasswd.desktop.in.h:2
++msgid "Password"
++msgstr "Махфий сўз"
++
+diff -Naur usermode-1.99/po/uz@Latn.po usermode-1.99.tpg/po/uz@Latn.po
+--- usermode-1.99/po/uz@Latn.po	1970-01-01 00:00:00.000000000 +0000
++++ usermode-1.99.tpg/po/uz@Latn.po	2009-02-03 22:35:48.000000000 +0000
+@@ -0,0 +1,519 @@
++# translation of uz.po to Uzbek
++# ###
++# ### Cyrilic version atuomatically built from the latin one;
++# ### Needs proofreading!
++# ###
++#
++# Latest versions of po files are at http://www.mandrakelinux.com/l10n/uz@Cyrl.php3
++#
++# Support for Uzbek language in usermode.
++# This file is distributed under the same license as the usermode package.
++#
++# Mashrab Kuvatov <kmashrab@uni-bremen.de>, 2003, 2007.
++msgid ""
++msgstr ""
++"Project-Id-Version: uz\n"
++"Report-Msgid-Bugs-To: \n"
++"POT-Creation-Date: 2007-08-20 16:57+0200\n"
++"PO-Revision-Date: 2007-09-08 01:51+0200\n"
++"Last-Translator: Mashrab Kuvatov <kmashrab@uni-bremen.de>\n"
++"Language-Team: Uzbek <floss-uz-l10n@googlegroups.com>\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++"X-Generator: KBabel 1.11.4\n"
++
++#.
++#. * Copyright (C) 2001 Red Hat, Inc.
++#. *
++#. * This is free software; you can redistribute it and/or modify it
++#. * under the terms of the GNU General Public License as published by
++#. * the Free Software Foundation; either version 2 of the License, or
++#. * (at your option) any later version.
++#. *
++#. * This program is distributed in the hope that it will be useful, but
++#. * WITHOUT ANY WARRANTY; without even the implied warranty of
++#. * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++#. * General Public License for more details.
++#. *
++#. * You should have received a copy of the GNU General Public License
++#. * along with this program; if not, write to the Free Software
++#. * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
++#.
++#. Just a dummy file for gettext, containing messages emmitted by various
++#. * commonly-used PAM modules.
++#: ../dummy.h:21
++msgid "OK"
++msgstr "Ok"
++
++#: ../dummy.h:22
++msgid "Exit"
++msgstr "Chiqish"
++
++#: ../dummy.h:23
++msgid "Cancel"
++msgstr "Bekor qilish"
++
++#: ../dummy.h:24
++msgid "Run Unprivileged"
++msgstr "Oddiy bajarish"
++
++#: ../dummy.h:25
++msgid "(current) UNIX password: "
++msgstr "(joriy) UNIX maxfiy so'zi: "
++
++#: ../dummy.h:26
++msgid "New UNIX password: "
++msgstr "Yangi UNIX maxfiy so'zi: "
++
++#: ../dummy.h:27
++msgid "Retype new UNIX password: "
++msgstr "UNIX maxfiy so'zini boshqadan kiriting: "
++
++#: ../dummy.h:28
++msgid "BAD PASSWORD: it's WAY too short"
++msgstr "MAXFIY SO'ZI XATO: u juda ham qisqa"
++
++#: ../dummy.h:29
++msgid "BAD PASSWORD: it is too short"
++msgstr "MAXFIY SO'ZI XATO: u juda ham qisqa"
++
++#: ../dummy.h:30
++msgid "Password unchanged"
++msgstr "Maxfiy so'z o'zgarmadi"
++
++#: ../dummy.h:31
++msgid "Sorry, passwords do not match"
++msgstr "Uzr, maxfiy so'zlar mos kelmadi"
++
++#: ../dummy.h:32
++msgid "Launch system-wide configuration tools without a password."
++msgstr ""
++
++#: ../dummy.h:33
++msgid "login: "
++msgstr ""
++
++#: ../dummy.h:34
++msgid "Password: "
++msgstr "Maxfiy so'z: "
++
++#: ../pam-panel-icon.c:89
++#, c-format
++msgid "Failed to drop administrator privileges: %s"
++msgstr ""
++
++#: ../pam-panel-icon.c:98
++#, c-format
++msgid ""
++"Failed to drop administrator privileges: pam_timestamp_check returned "
++"failure code %d"
++msgstr ""
++
++#: ../pam-panel-icon.c:146
++msgid ""
++"You're currently authorized to configure system-wide settings (that affect "
++"all users) without typing the administrator password again. You can give up "
++"this authorization."
++msgstr ""
++
++#: ../pam-panel-icon.c:151 ../pam-panel-icon.c:178
++msgid "Keep Authorization"
++msgstr ""
++
++#: ../pam-panel-icon.c:154 ../pam-panel-icon.c:185
++msgid "Forget Authorization"
++msgstr ""
++
++#: ../pam-panel-icon.c:285
++msgid "pam_timestamp_check is not setuid root"
++msgstr ""
++
++#: ../pam-panel-icon.c:289
++msgid "no controlling tty for pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:293
++msgid "user unknown to pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:297
++msgid "permissions error in pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:301
++msgid "invalid controlling tty in pam_timestamp_check"
++msgstr ""
++
++#: ../pam-panel-icon.c:319
++#, c-format
++msgid "Error: %s\n"
++msgstr "Xato: %s\n"
++
++#: ../pam-panel-icon.c:384
++#, c-format
++msgid "Failed to run command \"%s\": %s\n"
++msgstr "\"%s\" buyrug'ini bajarib bo'lmadi: %s\n"
++
++#: ../pam-panel-icon.c:396
++#, c-format
++msgid "Failed to set IO channel nonblocking: %s\n"
++msgstr ""
++
++#: ../pam-panel-icon.c:476
++msgid "pam-panel-icon: failed to connect to session manager\n"
++msgstr ""
++
++#: ../userhelper.c:201
++#, c-format
++msgid "Could not set default context for %s for program %s.\n"
++msgstr ""
++
++#: ../userhelper.c:212 ../userhelper.c:214
++#, c-format
++msgid "Could not set exec context to %s.\n"
++msgstr ""
++
++#: ../userhelper.c:803
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which may benefit from administrative\n"
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"\"%s\" buyrug'ini bajarish uchun administratorning ruxsati kerak\n"
++"bo'lishi mumkin. Buning uchun quyidagi ma'lumotni kiriting."
++
++#: ../userhelper.c:805
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which requires administrative\n"
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"\"%s\" buyrug'ini bajarish uchun administratorning ruxsati\n"
++"kerak. Buning uchun quyidagi ma'lumotni kiriting."
++
++#: ../userhelper.c:809
++msgid ""
++"You are attempting to run a command which may benefit from\n"
++"administrative privileges, but more information is needed in order to do so."
++msgstr ""
++"Istalgan amalni bajarish uchun administratorning ruxsati kerak\n"
++"bo'lishi mumkin. Buning uchun quyidagi ma'lumotni kiriting."
++
++#: ../userhelper.c:811
++msgid ""
++"You are attempting to run a command which requires administrative\n"
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"Istalgan amalni bajarish uchun administratorning ruxsati\n"
++"kerak. Buning uchun quyidagi ma'lumotni kiriting."
++
++#: ../userhelper.c:821 ../userhelper-wrap.c:753
++#, c-format
++msgid "Authenticating as \"%s\""
++msgstr "\"%s\" foydalanuvchining maxfiy so'zini kiriting"
++
++#: ../userhelper.c:2368
++#, c-format
++msgid "userhelper must be setuid root\n"
++msgstr ""
++
++#. FIXME: print a warning here?
++#: ../userhelper.c:2466
++#, c-format
++msgid "Unable to open graphical window, and unable to find controlling terminal.\n"
++msgstr "Grafik oynani ochib bo'lmadi va boshqaruvchi terminalni topib bo'lmadi.\n"
++
++#: ../userhelper-wrap.c:203
++msgid "Unknown exit code."
++msgstr "Dasturning chiqish kodi noma'lum."
++
++#: ../userhelper-wrap.c:205
++msgid "Information updated."
++msgstr "Ma'lumot yangilandi."
++
++#: ../userhelper-wrap.c:207
++msgid ""
++"The password you typed is invalid.\n"
++"Please try again."
++msgstr ""
++"Siz kiritgan maxfiy so'z noto'g'ri.\n"
++"Iltimos yana urinib ko'ring."
++
++#: ../userhelper-wrap.c:209
++msgid ""
++"One or more of the changed fields is invalid.\n"
++"This is probably due to either colons or commas in one of the fields.\n"
++"Please remove those and try again."
++msgstr ""
++"Bitta yoki bir nechta o'zgartirilgan maydonlarning qiymati noto'g'ri.\n"
++"Ehtimol bunga \":\" yoki \",\" belgilari sababchidir.\n"
++"Iltimos ularni olib tashlab yana urinib ko'ring."
++
++#: ../userhelper-wrap.c:211
++msgid "Password resetting error."
++msgstr "Maxfiy so'zni o'zgartirishda xato."
++
++#: ../userhelper-wrap.c:213
++msgid ""
++"Some systems files are locked.\n"
++"Please try again in a few moments."
++msgstr ""
++"Ba'zi tizim fayllari qulflangan.\n"
++"Iltimos bir ozdan so'ng yana urinib ko'ring."
++
++#: ../userhelper-wrap.c:215
++msgid "Unknown user."
++msgstr "Noma'lum foydalanuvchi."
++
++#: ../userhelper-wrap.c:217
++msgid "Insufficient rights."
++msgstr "Huquqlar yetarlicha emas."
++
++#: ../userhelper-wrap.c:219
++msgid "Invalid call to subprocess."
++msgstr ""
++
++#: ../userhelper-wrap.c:221
++msgid ""
++"Your current shell is not listed in /etc/shells.\n"
++"You are not allowed to change your shell.\n"
++"Consult your system administrator."
++msgstr ""
++"Joriy konsolingiz /etc/shells ro'yxatida yo'q.\n"
++"Konsolingizni o'zgartirishga sizga ruxsat yo'q.\n"
++"Administratorga murojaat qiling."
++
++#: ../userhelper-wrap.c:224
++msgid "Out of memory."
++msgstr "Xotira yetishmayapti."
++
++#: ../userhelper-wrap.c:226
++msgid "The exec() call failed."
++msgstr "exec() funktsiyasiga murojaat muvaffaqiyatsiz tugadi."
++
++#: ../userhelper-wrap.c:228
++msgid "Failed to find selected program."
++msgstr "Tanlangan dasturni topish muvaffaqiyatsiz tugadi."
++
++#: ../userhelper-wrap.c:231
++msgid "Request canceled."
++msgstr ""
++
++#: ../userhelper-wrap.c:233
++msgid "Internal PAM error occured."
++msgstr "PAM ichki xatosi ro'y berdi."
++
++#: ../userhelper-wrap.c:235
++msgid "Unknown error."
++msgstr "Noma'lum xato."
++
++#: ../userhelper-wrap.c:503
++msgid "Query"
++msgstr "So'rov"
++
++#: ../userhelper-wrap.c:580 ../userhelper-wrap.c:732
++msgid "Error"
++msgstr "Xato"
++
++#: ../userhelper-wrap.c:580
++msgid "Information"
++msgstr "Ma'lumot"
++
++#: ../userhelper-wrap.c:724
++msgid "Placeholder text."
++msgstr ""
++
++#: ../userhelper-wrap.c:782
++msgid "Changing password."
++msgstr "Maxfiy so'zni o'zgartirish."
++
++#: ../userhelper-wrap.c:784
++msgid "Changing personal information."
++msgstr "Shaxsiy ma'lumot o'zgartirilmoqda."
++
++#: ../userhelper-wrap.c:787
++msgid "Changing login shell."
++msgstr ""
++
++#: ../userhelper-wrap.c:791
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which may benefit from administrative "
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"\"%s\" buyrug'ini bajarish uchun administratorning ruxsati kerak bo'lishi mumkin. "
++"Buning uchun quyidagi ma'lumotni kiriting."
++
++#: ../userhelper-wrap.c:793
++#, c-format
++msgid ""
++"You are attempting to run \"%s\" which requires administrative privileges, "
++"but more information is needed in order to do so."
++msgstr ""
++"\"%s\" buyrug'ini bajarish uchun administratorning ruxsati kerak. Buning uchun "
++"quyidagi ma'lumotni kiriting."
++
++#: ../userhelper-wrap.c:798
++msgid ""
++"You are attempting to run a command which may benefit from administrative "
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"Istalgan amalni bajarish uchun administratorning ruxsati kerak bo'lishi mumkin. "
++"Buning uchun quyidagi ma'lumotni kiriting."
++
++#: ../userhelper-wrap.c:800
++msgid ""
++"You are attempting to run a command which requires administrative "
++"privileges, but more information is needed in order to do so."
++msgstr ""
++"Istalgan amalni bajarish uchun administratorning ruxsati kerak. Buning uchun "
++"quyidagi ma'lumotni kiriting."
++
++#: ../userhelper-wrap.c:810
++msgid "_Run Unprivileged"
++msgstr "_Oddiy bajarish"
++
++#: ../userhelper-wrap.c:968
++#, c-format
++msgid "Pipe error.\n"
++msgstr ""
++
++#: ../userhelper-wrap.c:975
++#, c-format
++msgid "Cannot fork().\n"
++msgstr "fork() funktsiyasini bajarib bo'lmadi.\n"
++
++#: ../userhelper-wrap.c:1001
++#, c-format
++msgid "Can't set charset %s on an IO channel: %s\n"
++msgstr ""
++
++#: ../userhelper-wrap.c:1077 ../userhelper-wrap.c:1081
++#, c-format
++msgid "dup2() error.\n"
++msgstr "dup2() funktsiyasining xatosi.\n"
++
++#: ../userhelper-wrap.c:1093
++#, c-format
++msgid "execl() error, errno=%d\n"
++msgstr "execl() funktsiyasining xatosi. Xato kodi: %d\n"
++
++#: ../userinfo.c:370
++#, c-format
++msgid "Unexpected argument"
++msgstr ""
++
++#: ../userinfo.c:395
++#, c-format
++msgid "You don't exist.  Go away.\n"
++msgstr "Siz mavjud emassiz!\n"
++
++#: ../usermount.c:61
++msgid "_Mount"
++msgstr "_Ulash"
++
++#: ../usermount.c:62
++msgid "Un_mount"
++msgstr "U_zish"
++
++#: ../usermount.c:289
++msgid ""
++"Are you sure you want to format this disk?  You will destroy any data it "
++"currently contains."
++msgstr ""
++"Rostdan diskni format qilishni istaysizmi? Siz undagi barcha ma'lumotni o'chirib "
++"yuborasiz."
++
++#: ../usermount.c:300
++msgid "Perform a _low-level format."
++msgstr "_Past darajali format qilish"
++
++#: ../usermount.c:337
++msgid "Select a _filesystem type to create:"
++msgstr "Yaratish uchun _fayl tizimini tanlang:"
++
++#: ../usermount.c:507
++msgid ""
++"There are no filesystems which you are allowed to mount or unmount.\n"
++"Contact your administrator."
++msgstr ""
++"Siz ulash yoki uzish huquqiga ega bo'lgan fayl tizimlar yo'q.\n"
++"Administratorga murojaat qiling."
++
++#. Create the dialog.
++#: ../usermount.c:508 ../usermount.c:520
++msgid "User Mount Tool"
++msgstr "Foydalanuvchi uchun ulash/uzish vositasi"
++
++#. Create the other buttons.
++#: ../usermount.c:538
++msgid "_Format"
++msgstr "_Format qilish"
++
++#: ../usermount.c:574
++msgid "Device"
++msgstr "Uskuna"
++
++#: ../usermount.c:580
++msgid "Directory"
++msgstr "Direktoriya"
++
++#: ../usermount.c:586
++msgid "Filesystem"
++msgstr "Fayl tizimi"
++
++#: ../usermount.c:633
++#, c-format
++msgid "The device '%s' can not be formatted."
++msgstr "'%s' uskunasini formatlab bo'lmaydi."
++
++#: ../usermode.glade.h:1
++msgid "Full Name:"
++msgstr "To'liq ismi:"
++
++#: ../usermode.glade.h:2
++msgid "Home Phone Number:"
++msgstr "Uy telefoni:"
++
++#: ../usermode.glade.h:3
++msgid "Login Shell:"
++msgstr "Kirish konsoli:"
++
++#: ../usermode.glade.h:4
++msgid "Office Phone Number:"
++msgstr "Ish telefoni:"
++
++#: ../usermode.glade.h:5
++msgid "Office:"
++msgstr "Xona:"
++
++#: ../usermode.glade.h:6
++msgid "User Information"
++msgstr "Foydalanuvchi haqida ma'lumot"
++
++#: ../userinfo.desktop.in.h:1
++msgid "About Myself"
++msgstr "O'zim haqimda ma'lumot"
++
++#: ../userinfo.desktop.in.h:2
++msgid "Change personal information"
++msgstr "Shaxsiy ma'lumotni o'zgartirish"
++
++#: ../usermount.desktop.in.h:1
++msgid "Disk Management"
++msgstr "Disk boshqaruvi"
++
++#: ../usermount.desktop.in.h:2
++msgid "Mount and unmount filesystems"
++msgstr "Fayl tizimlarini ulash va uzish"
++
++#: ../userpasswd.desktop.in.h:1
++msgid "Change your login password"
++msgstr "Maxfiy so'zingizni o'zgartirish"
++
++#: ../userpasswd.desktop.in.h:2
++msgid "Password"
++msgstr "Maxfiy so'z"
++

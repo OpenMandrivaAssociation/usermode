@@ -1,0 +1,18 @@
+diff -Naur usermode-1.99/pam-panel-icon.c usermode-1.99.tpg/pam-panel-icon.c
+--- usermode-1.99/pam-panel-icon.c	2008-11-11 11:40:38.000000000 +0000
++++ usermode-1.99.tpg/pam-panel-icon.c	2009-03-13 20:12:48.000000000 +0000
+@@ -425,11 +425,11 @@
+ 	argv[3] = NULL;
+ 
+ 	/* The restart command will restart us with this same session ID. */
+-	gsm_client_set_restart_command(client, G_N_ELEMENTS(argv) - 1,
+-				       (char**) argv);
++//	gsm_client_set_restart_command(client, G_N_ELEMENTS(argv) - 1,
++//				       (char**) argv);
+ 
+ 	/* The clone command will start up another copy. */
+-	gsm_client_set_clone_command(client, 1, (char**) argv);
++//	gsm_client_set_clone_command(client, 1, (char**) argv);
+ }
+ 
+ /* Handle the "session closing" notification. */

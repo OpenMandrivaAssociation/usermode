@@ -1,0 +1,11 @@
+diff -Naur usermode-1.101/userhelper-wrap.c usermode-1.101.tpg/userhelper-wrap.c
+--- usermode-1.101/userhelper-wrap.c	2009-09-15 19:03:16.000000000 +0000
++++ usermode-1.101.tpg/userhelper-wrap.c	2009-09-26 17:25:36.000000000 +0000
+@@ -703,6 +703,7 @@
+ 		gtk_window_set_position(GTK_WINDOW(resp->dialog),
+ 					GTK_WIN_POS_CENTER_ALWAYS);
+ 		gtk_window_set_keep_above(GTK_WINDOW(resp->dialog), TRUE);
++		gtk_window_stick (GTK_WINDOW(resp->dialog));
+ 		gtk_window_set_icon_from_file(GTK_WINDOW(resp->dialog),
+ 					      PIXMAPDIR "/password.png", NULL);
+ 		vbox = gtk_dialog_get_content_area (GTK_DIALOG(resp->dialog));

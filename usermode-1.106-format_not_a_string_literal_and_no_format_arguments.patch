@@ -1,0 +1,12 @@
+diff -Naur usermode-1.106//userhelper.c usermode-1.106.tpg//userhelper.c
+--- usermode-1.106//userhelper.c	2010-08-28 21:37:23.000000000 +0000
++++ usermode-1.106.tpg//userhelper.c	2010-08-28 21:49:00.000000000 +0000
+@@ -558,7 +558,7 @@
+ 
+ 	if (banner == 0) {
+ 		if ((data->banner != NULL) && (data->domain != NULL)) {
+-			text = g_strdup_printf(dgettext(data->domain, data->banner));
++			text = g_strdup_printf(dgettext(data->domain, data->banner), "%s");
+ 		} else {
+ 			if ((service != NULL) && (strlen(service) > 0) && strcmp(service, "simple_root_authen")) {
+ 				if (data->fallback_allowed) {
