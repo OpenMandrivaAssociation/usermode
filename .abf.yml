@@ -1,6 +1,3 @@
 sources:
-  "mandriva-console-auth:"	efe8a014248916c62cf16f58a0916c67f59289c1
-  "mandriva-simple-auth:"	4cc221c5e5ada4d35a063f4896090acd85b07fc2
-  "simple_root_authen:"	ba1750ebab7f695cc1d757134156835b4cbc3049
-  "simple_root_authen.apps:"	1ee6a1c12d35b6fd906f63e1698771a84afc8b05
-  "usermode-1.108.tar.xz:"	91d56d5fc63954c62bbc0790a66da8725b908123
+  "usermode-1.107.tar.xz": 72b6b8bfa40c0b453db9e5d0d196ba878bac90a1
+  "usermode-1.111.tar.xz": 900b7853e21ca620cc2877f1263e0d6bf730b5dd
