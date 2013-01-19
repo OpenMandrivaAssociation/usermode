@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	%mkrel 1
+Release:	2
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -81,7 +81,6 @@ XFree or GTK to run.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std VENDOR=mandriva
 
 mkdir -p %{buildroot}%{_mandir}/{man1,man8}
@@ -119,7 +118,6 @@ if [ -x /usr/sbin/msec -a "$SECURE_LEVEL" -gt "3" ]; then  /usr/sbin/msec $SECUR
 fi
 
 %files
-%defattr(-,root,root)
 %{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
 %{_bindir}/usermount
 %{_bindir}/userinfo
@@ -135,7 +133,6 @@ fi
 %{_datadir}/pixmaps/*
 
 %files -n %{name}-consoleonly -f %{name}.lang
-%defattr(-,root,root)
 %attr(4755,root,root) %{_sbindir}/userhelper
 %{_mandir}/man8/userhelper.8*
 %{_bindir}/consolehelper
