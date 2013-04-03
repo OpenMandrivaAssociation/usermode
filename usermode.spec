@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -30,22 +30,19 @@ Patch10:	usermode-1.99-disable-session-restart.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
-BuildRequires:	libglade2.0-devel
-BuildRequires:	libuser-devel
+BuildRequires:	pkgconfig(libglade-2.0)
+BuildRequires:	pkgconfig(libuser)
 BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	libice-devel
+BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(sm)
-BuildRequires:	startup-notification-devel
-# don't build with startup-notification for now, not fully functionnal
-#BuildRequires:  startup-notification-devel
-BuildRequires:	libblkid-devel
+BuildRequires:	pkgconfig(libstartup-notification-1.0)
+BuildRequires:	pkgconfig(blkid)
 Requires:	util-linux
 Requires:	pam >= 0.75-28mdk
 Requires:	%{name}-consoleonly = %{epoch}:%{version}-%{release}
 Conflicts:	SysVinit < 2.74-14
 Conflicts:	msec < 0.15-17mdk
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The usermode package contains several graphical tools for users:
@@ -78,6 +75,7 @@ XFree or GTK to run.
 %build
 %configure2_5x \
 	--without-selinux
+
 %make
 
 %install
