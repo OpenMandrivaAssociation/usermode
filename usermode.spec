@@ -35,7 +35,7 @@ BuildRequires:	libuser-devel
 BuildRequires:	pam-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	libice-devel
-BuildRequires:	libsm-devel
+BuildRequires:	pkgconfig(sm)
 BuildRequires:	startup-notification-devel
 # don't build with startup-notification for now, not fully functionnal
 #BuildRequires:  startup-notification-devel
