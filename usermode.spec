@@ -8,9 +8,9 @@ Group:		System/Configuration/Other
 Url:		https://fedorahosted.org/usermode/
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
 # being the console owner is enough
-Source1:	mandriva-console-auth
+Source1:	distro-console-auth
 # besides being the console owner, needs to authenticate as well
-Source2:	mandriva-simple-auth
+Source2:	distro-simple-auth
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
@@ -88,8 +88,8 @@ mkdir -p %{buildroot}%{_sysconfdir}/pam.d %{buildroot}%{_sysconfdir}/security/co
 
 install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/pam.d/simple_root_authen
 install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/security/console.apps/simple_root_authen
-install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/mandriva-console-auth
-install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/mandriva-simple-auth
+install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/distro-console-auth
+install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/distro-simple-auth
 
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cat << EOF > %{buildroot}%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
@@ -137,8 +137,8 @@ fi
 %{_bindir}/consolehelper
 %{_mandir}/man8/consolehelper.8*
 %config(noreplace) %{_sysconfdir}/pam.d/simple_root_authen
-%config(noreplace) %{_sysconfdir}/pam.d/mandriva-simple-auth
-%config(noreplace) %{_sysconfdir}/pam.d/mandriva-console-auth
+%config(noreplace) %{_sysconfdir}/pam.d/distro-simple-auth
+%config(noreplace) %{_sysconfdir}/pam.d/distro-console-auth
 %config(noreplace) %{_sysconfdir}/security/console.apps/simple_root_authen
 
 
