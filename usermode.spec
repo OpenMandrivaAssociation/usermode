@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -73,6 +73,7 @@ XFree or GTK to run.
 %patch10 -p1
 
 %build
+%serverbuild_hardened
 %configure2_5x \
 	--without-selinux
 
