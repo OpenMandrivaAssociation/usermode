@@ -80,7 +80,7 @@ XFree or GTK to run.
 %make
 
 %install
-%makeinstall_std VENDOR=mandriva
+%makeinstall_std VENDOR="%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')"
 
 mkdir -p %{buildroot}%{_mandir}/{man1,man8}
 
