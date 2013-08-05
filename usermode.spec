@@ -91,8 +91,8 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/security/console.apps/simp
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/distro-console-auth
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/distro-simple-auth
 
-ln -sf %{_sysconfdir}/pam.d/distro-console-auth %{_sysconfdir}/pam.d/mandriva-console-auth
-ln -sf %{_sysconfdir}/pam.d/distro-simple-auth %{_sysconfdir}/pam.d/mandriva-simple-auth
+ln -sf %{_sysconfdir}/pam.d/distro-console-auth %{buildroot}%{_sysconfdir}/pam.d/mandriva-console-auth
+ln -sf %{_sysconfdir}/pam.d/distro-simple-auth %{buildroot}%{_sysconfdir}/pam.d/mandriva-simple-auth
 
 
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
