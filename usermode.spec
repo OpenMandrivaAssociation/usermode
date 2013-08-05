@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -91,6 +91,10 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/security/console.apps/simp
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/distro-console-auth
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/distro-simple-auth
 
+ln -sf %{_sysconfdir}/pam.d/distro-console-auth %{_sysconfdir}/pam.d/mandriva-console-auth
+ln -sf %{_sysconfdir}/pam.d/distro-simple-auth %{_sysconfdir}/pam.d/mandriva-simple-auth
+
+
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cat << EOF > %{buildroot}%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
 [Desktop Entry]
@@ -140,7 +144,8 @@ fi
 %config(noreplace) %{_sysconfdir}/pam.d/distro-simple-auth
 %config(noreplace) %{_sysconfdir}/pam.d/distro-console-auth
 %config(noreplace) %{_sysconfdir}/security/console.apps/simple_root_authen
-
+%{_sysconfdir}/pam.d/mandriva-simple-auth
+%{_sysconfdir}/pam.d/mandriva-console-auth
 
 %changelog
 * Wed Oct 10 2012 Alexander Kazancev <kazancas@mandriva.orf> 1:1.111
