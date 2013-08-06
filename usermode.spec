@@ -91,6 +91,8 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/security/console.apps/simp
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/distro-console-auth
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/distro-simple-auth
 
+# (tpg) https://issues.openmandriva.org/show_bug.cgi?id=61
+# real workaround is to fix drakx and other to use common names
 ln -sf %{_sysconfdir}/pam.d/distro-console-auth %{buildroot}%{_sysconfdir}/pam.d/mandriva-console-auth
 ln -sf %{_sysconfdir}/pam.d/distro-simple-auth %{buildroot}%{_sysconfdir}/pam.d/mandriva-simple-auth
 
