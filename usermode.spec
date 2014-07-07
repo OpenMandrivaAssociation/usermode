@@ -74,10 +74,10 @@ XFree or GTK to run.
 
 %build
 %serverbuild_hardened
-%configure2_5x \
+%configure \
 	--without-selinux
 
-%make
+%make LIBS="-lm"
 
 %install
 %makeinstall_std VENDOR="%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')"
