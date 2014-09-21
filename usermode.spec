@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	11
+Release:	12
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -11,6 +11,8 @@ Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.x
 Source1:	distro-console-auth
 # besides being the console owner, needs to authenticate as well
 Source2:	distro-simple-auth
+Source3:	config-util
+Source4:	config-util-user
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
@@ -90,6 +92,8 @@ install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/pam.d/simple_root_authen
 install -m 644 %{SOURCE11} %{buildroot}%{_sysconfdir}/security/console.apps/simple_root_authen
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/pam.d/distro-console-auth
 install -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/pam.d/distro-simple-auth
+install -p -m 644 %{SOURCE3} %{buildroot}%{_sysconfdir}/security/console.apps/config-util
+install -p -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/config-util-user
 
 # (tpg) https://issues.openmandriva.org/show_bug.cgi?id=61
 # real workaround is to fix drakx and other to use common names
