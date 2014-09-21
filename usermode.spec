@@ -76,7 +76,7 @@ XFree or GTK to run.
 
 %build
 %serverbuild_hardened
-%configure \
+%configure2_5x \
 	--without-selinux
 
 %make LIBS="-lm"
