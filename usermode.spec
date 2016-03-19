@@ -1,7 +1,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	14
+Release:	15
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
