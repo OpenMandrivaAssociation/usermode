@@ -1,11 +1,11 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
-Release:	16.1
+Release:	18
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
-Url:		https://fedorahosted.org/usermode/
+Url:		https://pagure.io/usermode
 Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
 # being the console owner is enough
 Source1:	distro-console-auth
@@ -40,6 +40,7 @@ BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(blkid)
+Requires:	passwd
 Requires:	util-linux
 Requires:	pam >= 0.75-28mdk
 Requires:	%{name}-consoleonly = %{epoch}:%{version}-%{release}
@@ -154,5 +155,3 @@ fi
 %config(noreplace) %{_sysconfdir}/security/console.apps/config-util
 %{_sysconfdir}/pam.d/mandriva-simple-auth
 %{_sysconfdir}/pam.d/mandriva-console-auth
-
-
