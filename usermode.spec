@@ -1,3 +1,5 @@
+%define _disable_lto 1
+
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.111
@@ -80,13 +82,12 @@ XFree or GTK to run.
 %configure \
 	--without-selinux
 
-%make LIBS="-lm"
+%make_build LIBS="-lm"
 
 %install
-%makeinstall_std VENDOR="%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')"
+%make_install VENDOR="%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')"
 
 mkdir -p %{buildroot}%{_mandir}/{man1,man8}
-
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d %{buildroot}%{_sysconfdir}/security/console.apps
 
 install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/pam.d/simple_root_authen
