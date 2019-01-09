@@ -208,7 +208,7 @@ diff -Naur usermode-1.113/userhelper.c usermode-1.113.tpg/userhelper.c
 +
 +		if (env_gtk2_rc_files) {
 +			setenv("GTK2_RC_FILES", env_gtk2_rc_files, 1);
-+			g_free(env_gtk2_rc_filesy);
++			g_free(env_gtk2_rc_files);
 +		}
 +
 +		if (env_metaclass) {
