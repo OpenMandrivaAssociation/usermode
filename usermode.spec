@@ -26,7 +26,6 @@ Patch1:		usermode-1.113-environment.patch
 Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.101-stick.patch
-Patch8:		usermode-1.100-sl-po.patch
 # (tpg) pam-panel-icon should check whether it is started from autostart or saved session
 # without this we have more instances of pam-panel-icon running
 # https://qa.mandriva.com/show_bug.cgi?id=44632
