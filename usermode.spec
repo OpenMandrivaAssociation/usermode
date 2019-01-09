@@ -18,19 +18,20 @@ Source4:	config-util-user
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
-Patch1:		usermode-1.99-environment.patch
+Patch1:		usermode-1.113-environment.patch
 # allow simple authentication without config file (used by drakxtools)
-Patch2:		usermode-1.108-user_authen.patch
+# (tpg) starting from 4.0 drakx is dead
+#Patch2:		usermode-1.108-user_authen.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
 Patch7:		usermode-1.101-stick.patch
 Patch8:		usermode-1.100-sl-po.patch
-Patch9:		usermode-1.106-format_not_a_string_literal_and_no_format_arguments.patch
 # (tpg) pam-panel-icon should check whether it is started from autostart or saved session
 # without this we have more instances of pam-panel-icon running
 # https://qa.mandriva.com/show_bug.cgi?id=44632
 Patch10:	usermode-1.99-disable-session-restart.patch
+
 BuildRequires:	autoconf2.5
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
@@ -67,15 +68,7 @@ This package contains only the usermode stuff which doesn't require
 XFree or GTK to run.
 
 %prep
-%setup -q
-
-%patch1 -p1 -b .environment
-%patch2 -p1 -b .user_authen
-%patch3 -p1 -b .uz
-%patch7 -p1 -b .stick
-#%patch8 -p1 -b .newpo
-%patch9 -p1
-%patch10 -p1
+%autosetup -p1
 
 %build
 %serverbuild_hardened

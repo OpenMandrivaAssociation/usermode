@@ -24,7 +24,7 @@ diff -Naur usermode-1.108/userhelper.c usermode-1.108.tpg/userhelper.c
  #include "userhelper-messages.h"
 @@ -584,7 +586,7 @@
  		if ((data->banner != NULL) && (data->domain != NULL)) {
- 			text = g_strdup_printf(dgettext(data->domain, data->banner));
+ 			text = g_strdup (dgettext(data->domain, data->banner));
  		} else {
 -			if ((service != NULL) && (strlen(service) > 0)) {
 +			if ((service != NULL) && (strlen(service) > 0) && strcmp(service, "simple_root_authen")) {

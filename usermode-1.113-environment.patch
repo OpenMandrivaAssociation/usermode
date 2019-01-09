@@ -1,0 +1,226 @@
+From 3f9d4f7c332aaba778b775e6f07b5fefde0b9841 Mon Sep 17 00:00:00 2001
+From: Frederic Crozat <fcrozat@mandriva.com>
+Date: Tue, 3 Mar 2009 16:01:19 +0000
+Subject: [PATCH 1/7] allow more environment variables to go through
+
+---
+
+diff -Naur usermode-1.113/userhelper.c usermode-1.113.tpg/userhelper.c
+--- usermode-1.113/userhelper.c	2018-10-31 15:33:30.000000000 +0000
++++ usermode-1.113.tpg/userhelper.c	2019-01-09 16:25:44.987725983 +0000
+@@ -1520,6 +1520,12 @@
+ 	char *env_display, *env_shell;
+ 	char *env_lang, *env_language, *env_lcall, *env_lcmsgs;
+ 	char *env_xauthority;
++	char *env_iceauthority;
++	char *env_secure_level, *env_rpm_install_lang;
++	char *env_lcctype, *env_lcnumeric, *env_lctime, *env_lccollate;
++	char *env_lcmonetary, *env_browser, *env_session_manager, *env_orbit_socketdir;
++	char *env_ftp_proxy, *env_http_proxy, *env_https_proxy, *env_no_proxy;
++	char *env_gtk2_rc_files, *env_gtk_modules, *env_metaclass;
+ 	int session, tryagain, gui, retval;
+ 	struct stat sbuf;
+ 	struct passwd *pwd;
+@@ -1562,6 +1568,24 @@
+ 	env_shell = g_strdup(getenv("SHELL"));
+ 	env_term = g_strdup(getenv("TERM"));
+ 	env_xauthority = g_strdup(getenv("XAUTHORITY"));
++	env_rpm_install_lang = getenv("RPM_INSTALL_LANG");
++	env_secure_level = g_strdup(getenv("SECURE_LEVEL"));
++	env_lcctype = g_strdup(getenv("LC_CTYPE"));
++	env_lcnumeric = g_strdup(getenv("LC_NUMERIC"));
++	env_lctime = g_strdup(getenv("LC_TIME"));
++	env_lccollate = g_strdup(getenv("LC_COLLATE"));
++	env_lcmonetary = g_strdup(getenv("LC_MONETARY"));
++	env_browser = g_strdup(getenv("BROWSER"));
++	env_session_manager = g_strdup(getenv("SESSION_MANAGER"));
++	env_orbit_socketdir = g_strdup(getenv("ORBIT_SOCKETDIR"));
++	env_ftp_proxy = g_strdup(getenv("ftp_proxy"));
++	env_http_proxy = g_strdup(getenv("http_proxy"));
++	env_https_proxy = g_strdup(getenv("https_proxy"));
++	env_no_proxy = g_strdup(getenv("no_proxy"));
++	env_iceauthority = g_strdup(getenv("ICEAUTHORITY"));
++	env_gtk2_rc_files= g_strdup(getenv("GTK2_RC_FILES"));
++	env_metaclass = g_strdup(getenv("META_CLASS"));
++	env_gtk_modules = g_strdup(getenv("GTK_MODULES"));
+ 
+ 	/* Sanity-check the environment variables as best we can: those
+ 	 * which aren't path names shouldn't contain "/", and none of
+@@ -1606,6 +1630,87 @@
+ 	    (strstr(env_xauthority , "..") ||
+ 	     strchr(env_xauthority , '%')))
+ 		env_xauthority = NULL;
++	if (env_rpm_install_lang &&
++	    (strstr(env_rpm_install_lang, "/") ||
++	     strstr(env_rpm_install_lang, "..") ||
++	     strchr(env_rpm_install_lang, '%')))
++		env_rpm_install_lang = NULL;
++	if (env_secure_level &&
++	    (strstr(env_secure_level, "/") ||
++	     strstr(env_secure_level, "..") ||
++	     strchr(env_secure_level, '%')))
++		env_secure_level = NULL;
++	if (env_lcctype &&
++	    (strstr(env_lcctype, "/") ||
++	     strstr(env_lcctype, "..") ||
++	     strchr(env_lcctype, '%')))
++		env_lcctype = NULL;
++	if (env_lcnumeric &&
++	    (strstr(env_lcnumeric, "/") ||
++	     strstr(env_lcnumeric, "..") ||
++	     strchr(env_lcnumeric, '%')))
++		env_lcnumeric = NULL;
++	if (env_lctime &&
++	    (strstr(env_lctime, "/") ||
++	     strstr(env_lctime, "..") ||
++	     strchr(env_lctime, '%')))
++		env_lctime = NULL;
++	if (env_lccollate &&
++	    (strstr(env_lccollate, "/") ||
++	     strstr(env_lccollate, "..") ||
++	     strchr(env_lccollate, '%')))
++		env_lccollate = NULL;
++	if (env_lcmonetary &&
++	    (strstr(env_lcmonetary, "/") ||
++	     strstr(env_lcmonetary, "..") ||
++	     strchr(env_lcmonetary, '%')))
++		env_lcmonetary= NULL;
++	if (env_browser &&
++	    (strstr(env_browser, "/") ||
++	     strstr(env_browser, "..") ||
++	     strchr(env_browser, '%')))
++		env_browser= NULL;
++	if (env_session_manager &&
++	    (strstr(env_session_manager, "..") ||
++	     strchr(env_session_manager, '%')))
++		env_session_manager = NULL;
++	if (env_orbit_socketdir &&
++	    (strstr(env_orbit_socketdir, "..") ||
++	     strchr(env_orbit_socketdir, '%')))
++		env_orbit_socketdir = NULL;
++	if (env_ftp_proxy &&
++	    (strstr(env_ftp_proxy, "..") ||
++	     strchr(env_ftp_proxy, '%')))
++		env_ftp_proxy = NULL;
++	if (env_http_proxy &&
++	    (strstr(env_http_proxy, "..") ||
++	     strchr(env_http_proxy, '%')))
++		env_http_proxy = NULL;
++	if (env_https_proxy &&
++	    (strstr(env_https_proxy, "..") ||
++	     strchr(env_https_proxy, '%')))
++		env_https_proxy = NULL;
++	if (env_no_proxy &&
++	    (strstr(env_no_proxy, "..") ||
++	     strchr(env_no_proxy, '%')))
++		env_no_proxy = NULL;
++	if (env_iceauthority &&
++	    (strstr(env_iceauthority , "..") ||
++	     strchr(env_iceauthority , '%')))
++		env_iceauthority = NULL;
++	if (env_gtk2_rc_files &&
++	    (strstr(env_gtk2_rc_files , "..") ||
++	     strchr(env_gtk2_rc_files , '%')))
++		env_gtk2_rc_files = NULL;
++	if (env_metaclass &&
++	    (strstr(env_metaclass , "/") ||
++	     strstr(env_metaclass , "..") ||
++	     strchr(env_metaclass , '%')))
++		env_metaclass = NULL;
++	if (env_gtk_modules &&
++	    (strstr(env_gtk_modules, "..") ||
++	     strchr(env_gtk_modules , '%')))
++		env_gtk_modules = NULL;
+ 
+ 	keep_env_names = NULL;
+ 	keep_env_values = NULL;
+@@ -1676,6 +1781,62 @@
+ 		setenv("TERM", env_term, 1);
+ 		g_free(env_term);
+ 	}
++	if (env_rpm_install_lang) {
++	    setenv("RPM_INSTALL_LANG", env_rpm_install_lang, 1);
++		g_free(env_term);
++	}
++	if (env_secure_level) {
++	    setenv("SECURE_LEVEL", env_secure_level, 1);
++		g_free(env_term);
++	}
++	if (env_lcctype) {
++		setenv("LC_CTYPE", env_lcctype, 1);
++		g_free(env_term);
++	}
++	if (env_lcnumeric) {
++		setenv("LC_NUMERIC", env_lcnumeric, 1); 
++		g_free(env_term);
++	}
++	if (env_lctime) {
++		setenv("LC_TIME", env_lctime, 1);
++		g_free(env_term);
++	}
++	if (env_lccollate) {
++		setenv("LC_COLLATE", env_lccollate, 1);
++		g_free(env_term);
++	}
++	if (env_lcmonetary) {
++		setenv("LC_MONETARY", env_lcmonetary, 1);
++		g_free(env_term);
++	}
++	if (env_browser) {
++		setenv("BROWSER", env_browser, 1);
++		g_free(env_term);
++	}
++	if (env_session_manager) {
++		setenv("SESSION_MANAGER", env_session_manager, 1);
++		g_free(env_term);
++	}
++	if (env_orbit_socketdir) {
++		setenv("ORBIT_SOCKETDIR", env_orbit_socketdir, 1);
++		g_free(env_term);
++	}
++	if (env_ftp_proxy) {
++		setenv("ftp_proxy", env_ftp_proxy, 1);
++		g_free(env_term);
++	}
++	if (env_http_proxy) {
++		setenv("http_proxy", env_http_proxy, 1);
++		g_free(env_term);
++	}
++	if (env_https_proxy) {
++		setenv("https_proxy", env_https_proxy, 1);
++		g_free(env_term);
++	}
++	if (env_no_proxy) {
++		setenv("no_proxy", env_no_proxy, 1);
++		g_free(env_term);
++	}
+ 
+ 	/* Set the PATH to a reasonaly safe list of directories. */
+ 	setenv("PATH", "/usr/sbin:/usr/bin:/sbin:/bin:/root/bin", 1);
+@@ -2040,6 +2201,26 @@
+ 			g_free(env_xauthority);
+ 		}
+ 
++		if (env_iceauthority) {
++			setenv("ICEAUTHORITY", env_iceauthority, 1);
++			g_free(env_iceauthority);
++		}
++
++		if (env_gtk2_rc_files) {
++			setenv("GTK2_RC_FILES", env_gtk2_rc_files, 1);
++			g_free(env_gtk2_rc_filesy);
++		}
++
++		if (env_metaclass) {
++			setenv("META_CLASS", env_metaclass, 1);
++			g_free(env_metaclass);
++		}
++
++		if (env_gtk_modules) {
++			setenv("GTK_MODULES", env_gtk_modules, 1);
++			g_free(env_gtk_modules);
++		}
++
+ 		/* Open a session. */
+ 		retval = pam_open_session(data->pamh, 0);
+ 		if (retval != PAM_SUCCESS) {
