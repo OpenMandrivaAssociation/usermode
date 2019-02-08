@@ -46,6 +46,8 @@ BuildRequires:	pkgconfig(blkid)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
+# For libsupc++
+BuildRequires:	stdc++-static-devel
 Requires:	passwd
 Requires:	util-linux
 Requires:	pam >= 0.75-28mdk
