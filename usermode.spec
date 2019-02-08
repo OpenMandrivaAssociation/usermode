@@ -3,7 +3,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.113
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -15,6 +15,7 @@ Source1:	distro-console-auth
 Source2:	distro-simple-auth
 Source3:	config-util
 Source4:	config-util-user
+Source5:	https://github.com/OpenMandrivaSoftware/consolehelper/archive/master.tar.gz
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
@@ -42,6 +43,10 @@ BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(blkid)
+BuildRequires:	qtchooser
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Widgets)
 Requires:	passwd
 Requires:	util-linux
 Requires:	pam >= 0.75-28mdk
@@ -66,8 +71,15 @@ Group:		System/Libraries
 This package contains only the usermode stuff which doesn't require
 XFree or GTK to run.
 
+%package gtk
+Summary:	Gtk dialogs for usermode
+Group:		System/Libraries
+
+%description gtk
+Gtk dialogs for usermode
+
 %prep
-%autosetup -p1
+%autosetup -p1 -a 5
 
 %build
 %serverbuild_hardened
@@ -76,8 +88,17 @@ XFree or GTK to run.
 
 %make_build LIBS="-lm"
 
+# Replace some insane g_junk...
+cd consolehelper-master
+%make_build
+
 %install
 %make_install VENDOR="%(echo %{vendor} | tr A-Z a-z |sed -e 's#[ /()!?]#_#g')"
+
+# Replace some insane g_junk...
+cd consolehelper-master
+%make_install
+cd ..
 
 mkdir -p %{buildroot}%{_mandir}/{man1,man8}
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d %{buildroot}%{_sysconfdir}/security/console.apps
@@ -121,8 +142,12 @@ if [ -x /usr/sbin/msec -a "$SECURE_LEVEL" -gt "3" ]; then  /usr/sbin/msec $SECUR
 fi
 
 %files
-%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
 %{_sysconfdir}/pam.d/config-util-user
+%{_bindir}/consolehelper-qt
+
+%files gtk
+%{_mandir}/man8/consolehelper-gtk.8*
+%{_bindir}/consolehelper-gtk
 %{_bindir}/usermount
 %{_bindir}/userinfo
 %{_bindir}/userpasswd
@@ -130,11 +155,10 @@ fi
 %{_mandir}/man1/userinfo.1*
 %{_mandir}/man1/userpasswd.1*
 %{_mandir}/man1/pam-panel-icon.1*
-%{_mandir}/man8/consolehelper-gtk.8*
-%{_bindir}/consolehelper-gtk
 %{_bindir}/pam-panel-icon
 %{_datadir}/usermode
 %{_datadir}/pixmaps/*
+%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
 
 %files -n %{name}-consoleonly -f %{name}.lang
 %attr(4755,root,root) %{_sbindir}/userhelper
