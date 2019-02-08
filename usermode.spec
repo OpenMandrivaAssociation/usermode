@@ -43,7 +43,6 @@ BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(libstartup-notification-1.0)
 BuildRequires:	pkgconfig(blkid)
-BuildRequires:	qtchooser
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -90,6 +89,7 @@ Gtk dialogs for usermode
 
 # Replace some insane g_junk...
 cd consolehelper-master
+export PATH=%{_libdir}/qt5/bin:$PATH
 %make_build
 
 %install
