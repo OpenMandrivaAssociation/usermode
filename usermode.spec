@@ -19,7 +19,9 @@ Source5:	https://github.com/OpenMandrivaSoftware/consolehelper/archive/master.ta
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
-Patch1:		usermode-1.113-environment.patch
+# bad patch, produce a segfault
+# need to rewrite it and fix all copy-paste
+#Patch1:		usermode-1.113-environment.patch
 # allow simple authentication without config file (used by drakxtools)
 # (tpg) starting from 4.0 drakx is dead
 #Patch2:		usermode-1.108-user_authen.patch
