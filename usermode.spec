@@ -2,29 +2,26 @@
 
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
-Version:	1.113
-Release:	2
+Version:	1.114
+Release:	1
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
 Url:		https://pagure.io/usermode
-Source0:	https://fedorahosted.org/releases/u/s/usermode/%{name}-%{version}.tar.xz
+Source0:	https://releases.pagure.org/usermode/usermode-%{version}.tar.xz
 # being the console owner is enough
 Source1:	distro-console-auth
 # besides being the console owner, needs to authenticate as well
 Source2:	distro-simple-auth
 Source3:	config-util
 Source4:	config-util-user
-Source5:	https://github.com/OpenMandrivaSoftware/consolehelper/archive/master.tar.gz
+Source5:	https://github.com/OpenMandrivaSoftware/consolehelper/archive/consolehelper-master.tar.gz
 Source10:	simple_root_authen
 Source11:	simple_root_authen.apps
 # allow more environment variables to be set in root environment
 # bad patch, produce a segfault
 # need to rewrite it and fix all copy-paste
-#Patch1:		usermode-1.113-environment.patch
-# allow simple authentication without config file (used by drakxtools)
-# (tpg) starting from 4.0 drakx is dead
-#Patch2:		usermode-1.108-user_authen.patch
+Patch1:		usermode-1.114-environment.patch
 # http://qa.mandriva.com/show_bug.cgi?id=32459
 Patch3:		usermode-1.99-uz-po.patch
 # (fc) 1.85-1mdk set password dialog to stick on all workspace
@@ -34,7 +31,7 @@ Patch7:		usermode-1.101-stick.patch
 # https://qa.mandriva.com/show_bug.cgi?id=44632
 Patch10:	usermode-1.99-disable-session-restart.patch
 
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(libglade-2.0)
@@ -52,10 +49,8 @@ BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	stdc++-static-devel
 Requires:	passwd
 Requires:	util-linux
-Requires:	pam >= 0.75-28mdk
-Requires:	%{name}-consoleonly = %{epoch}:%{version}-%{release}
-Conflicts:	SysVinit < 2.74-14
-Conflicts:	msec < 0.15-17mdk
+Requires:	pam
+Requires:	%{name}-consoleonly >= %{EVRD}
 
 %description
 The usermode package contains several graphical tools for users:
@@ -79,13 +74,12 @@ Summary:	Gtk dialogs for usermode
 Group:		System/Libraries
 
 %description gtk
-Gtk dialogs for usermode
+Gtk dialogs for usermode.
 
 %prep
 %autosetup -p1 -a 5
 
 %build
-%serverbuild_hardened
 %configure \
 	--without-selinux
 
@@ -119,7 +113,6 @@ install -p -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/config-util-user
 ln -sf %{_sysconfdir}/pam.d/distro-console-auth %{buildroot}%{_sysconfdir}/pam.d/mandriva-console-auth
 ln -sf %{_sysconfdir}/pam.d/distro-simple-auth %{buildroot}%{_sysconfdir}/pam.d/mandriva-simple-auth
 
-
 mkdir -p %{buildroot}%{_sysconfdir}/xdg/autostart
 cat << EOF > %{buildroot}%{_sysconfdir}/xdg/autostart/pam-panel-icon.desktop
 [Desktop Entry]
@@ -139,11 +132,6 @@ EOF
 # remove unpackaged files
 rm -f %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/@GETTEXT_PACKAGE@.mo \
  %{buildroot}%{_datadir}/applications/*.desktop
-
-%post
-if [ ! -z "$SECURE_LEVEL" ];then
-if [ -x /usr/sbin/msec -a "$SECURE_LEVEL" -gt "3" ]; then  /usr/sbin/msec $SECURE_LEVEL || true ; fi
-fi
 
 %files
 %{_sysconfdir}/pam.d/config-util-user

@@ -4,11 +4,16 @@ Date: Tue, 3 Mar 2009 16:01:19 +0000
 Subject: [PATCH 1/7] allow more environment variables to go through
 
 ---
+Rebase for 1.114 release
+---
+ userhelper.c |  181 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 files changed, 181 insertions(+), 0 deletions(-)
 
-diff -Naur usermode-1.113/userhelper.c usermode-1.113.tpg/userhelper.c
---- usermode-1.113/userhelper.c	2018-10-31 15:33:30.000000000 +0000
-+++ usermode-1.113.tpg/userhelper.c	2019-01-09 16:25:44.987725983 +0000
-@@ -1520,6 +1520,12 @@
+diff --git a/userhelper.c b/userhelper.c
+index 6fbc90c..62e120f 100644
+--- a/userhelper.c
++++ b/userhelper.c
+@@ -1518,6 +1518,12 @@ wrap(const char *user, const char *progr
  	char *env_display, *env_shell;
  	char *env_lang, *env_language, *env_lcall, *env_lcmsgs;
  	char *env_xauthority;
@@ -21,11 +26,11 @@ diff -Naur usermode-1.113/userhelper.c usermode-1.113.tpg/userhelper.c
  	int session, tryagain, gui, retval;
  	struct stat sbuf;
  	struct passwd *pwd;
-@@ -1562,6 +1568,24 @@
+@@ -1560,6 +1566,24 @@ wrap(const char *user, const char *progr
  	env_shell = g_strdup(getenv("SHELL"));
  	env_term = g_strdup(getenv("TERM"));
  	env_xauthority = g_strdup(getenv("XAUTHORITY"));
-+	env_rpm_install_lang = getenv("RPM_INSTALL_LANG");
++	env_rpm_install_lang = g_strdup(getenv("RPM_INSTALL_LANG"));
 +	env_secure_level = g_strdup(getenv("SECURE_LEVEL"));
 +	env_lcctype = g_strdup(getenv("LC_CTYPE"));
 +	env_lcnumeric = g_strdup(getenv("LC_NUMERIC"));
@@ -46,158 +51,194 @@ diff -Naur usermode-1.113/userhelper.c usermode-1.113.tpg/userhelper.c
  
  	/* Sanity-check the environment variables as best we can: those
  	 * which aren't path names shouldn't contain "/", and none of
-@@ -1606,6 +1630,87 @@
- 	    (strstr(env_xauthority , "..") ||
- 	     strchr(env_xauthority , '%')))
+@@ -1622,6 +1646,123 @@ wrap(const char *user, const char *progr
+ 		g_free(env_xauthority);
  		env_xauthority = NULL;
+ 	}
 +	if (env_rpm_install_lang &&
 +	    (strstr(env_rpm_install_lang, "/") ||
 +	     strstr(env_rpm_install_lang, "..") ||
-+	     strchr(env_rpm_install_lang, '%')))
++	     strchr(env_rpm_install_lang, '%'))) {
++		g_free(env_rpm_install_lang);
 +		env_rpm_install_lang = NULL;
++	}
 +	if (env_secure_level &&
 +	    (strstr(env_secure_level, "/") ||
 +	     strstr(env_secure_level, "..") ||
-+	     strchr(env_secure_level, '%')))
++	     strchr(env_secure_level, '%'))) {
++		g_free(env_secure_level);
 +		env_secure_level = NULL;
++	}
 +	if (env_lcctype &&
 +	    (strstr(env_lcctype, "/") ||
 +	     strstr(env_lcctype, "..") ||
-+	     strchr(env_lcctype, '%')))
++	     strchr(env_lcctype, '%'))) {
++		g_free(env_lcctype);
 +		env_lcctype = NULL;
++	}
 +	if (env_lcnumeric &&
 +	    (strstr(env_lcnumeric, "/") ||
 +	     strstr(env_lcnumeric, "..") ||
-+	     strchr(env_lcnumeric, '%')))
++	     strchr(env_lcnumeric, '%'))) {
++		g_free(env_lcnumeric);
 +		env_lcnumeric = NULL;
++	}
 +	if (env_lctime &&
 +	    (strstr(env_lctime, "/") ||
 +	     strstr(env_lctime, "..") ||
-+	     strchr(env_lctime, '%')))
++	     strchr(env_lctime, '%'))) {
++		g_free(env_lctime);
 +		env_lctime = NULL;
++	}
 +	if (env_lccollate &&
 +	    (strstr(env_lccollate, "/") ||
 +	     strstr(env_lccollate, "..") ||
-+	     strchr(env_lccollate, '%')))
++	     strchr(env_lccollate, '%'))) {
++		g_free(env_lccollate);
 +		env_lccollate = NULL;
++	}
 +	if (env_lcmonetary &&
 +	    (strstr(env_lcmonetary, "/") ||
 +	     strstr(env_lcmonetary, "..") ||
-+	     strchr(env_lcmonetary, '%')))
++	     strchr(env_lcmonetary, '%'))) {
++		g_free(env_lcmonetary);
 +		env_lcmonetary= NULL;
++	}
 +	if (env_browser &&
 +	    (strstr(env_browser, "/") ||
 +	     strstr(env_browser, "..") ||
-+	     strchr(env_browser, '%')))
++	     strchr(env_browser, '%'))) {
++		g_free(env_browser);
 +		env_browser= NULL;
++	}
 +	if (env_session_manager &&
 +	    (strstr(env_session_manager, "..") ||
-+	     strchr(env_session_manager, '%')))
++	     strchr(env_session_manager, '%'))) {
++		g_free(env_session_manager);
 +		env_session_manager = NULL;
++	}
 +	if (env_orbit_socketdir &&
 +	    (strstr(env_orbit_socketdir, "..") ||
-+	     strchr(env_orbit_socketdir, '%')))
++	     strchr(env_orbit_socketdir, '%'))) {
++		g_free(env_orbit_socketdir);
 +		env_orbit_socketdir = NULL;
++	}
 +	if (env_ftp_proxy &&
 +	    (strstr(env_ftp_proxy, "..") ||
-+	     strchr(env_ftp_proxy, '%')))
++	     strchr(env_ftp_proxy, '%'))) {
++		g_free(env_ftp_proxy);
 +		env_ftp_proxy = NULL;
++	}
 +	if (env_http_proxy &&
 +	    (strstr(env_http_proxy, "..") ||
-+	     strchr(env_http_proxy, '%')))
++	     strchr(env_http_proxy, '%'))) {
++		g_free(env_http_proxy);
 +		env_http_proxy = NULL;
++	}
 +	if (env_https_proxy &&
 +	    (strstr(env_https_proxy, "..") ||
-+	     strchr(env_https_proxy, '%')))
++	     strchr(env_https_proxy, '%'))) {
++		g_free(env_https_proxy);
 +		env_https_proxy = NULL;
++	    }
 +	if (env_no_proxy &&
 +	    (strstr(env_no_proxy, "..") ||
-+	     strchr(env_no_proxy, '%')))
++	     strchr(env_no_proxy, '%'))) {
++		g_free(env_no_proxy);
 +		env_no_proxy = NULL;
++	}
 +	if (env_iceauthority &&
 +	    (strstr(env_iceauthority , "..") ||
-+	     strchr(env_iceauthority , '%')))
++	     strchr(env_iceauthority , '%'))) {
++		g_free(env_iceauthority);
 +		env_iceauthority = NULL;
++	}
 +	if (env_gtk2_rc_files &&
 +	    (strstr(env_gtk2_rc_files , "..") ||
-+	     strchr(env_gtk2_rc_files , '%')))
++	     strchr(env_gtk2_rc_files , '%'))) {
++		g_free(env_gtk2_rc_files);
 +		env_gtk2_rc_files = NULL;
++	}
 +	if (env_metaclass &&
 +	    (strstr(env_metaclass , "/") ||
 +	     strstr(env_metaclass , "..") ||
-+	     strchr(env_metaclass , '%')))
++	     strchr(env_metaclass , '%'))) {
++		g_free(env_metaclass);
 +		env_metaclass = NULL;
++	}
 +	if (env_gtk_modules &&
 +	    (strstr(env_gtk_modules, "..") ||
-+	     strchr(env_gtk_modules , '%')))
++	     strchr(env_gtk_modules , '%'))) {
++		g_free(env_gtk_modules);
 +		env_gtk_modules = NULL;
++	}
  
  	keep_env_names = NULL;
  	keep_env_values = NULL;
-@@ -1676,6 +1781,62 @@
+@@ -1692,6 +1833,62 @@ wrap(const char *user, const char *progr
  		setenv("TERM", env_term, 1);
  		g_free(env_term);
  	}
 +	if (env_rpm_install_lang) {
-+	    setenv("RPM_INSTALL_LANG", env_rpm_install_lang, 1);
-+		g_free(env_term);
++		setenv("RPM_INSTALL_LANG", env_rpm_install_lang, 1);
++		g_free(env_rpm_install_lang);
 +	}
 +	if (env_secure_level) {
-+	    setenv("SECURE_LEVEL", env_secure_level, 1);
-+		g_free(env_term);
++		setenv("SECURE_LEVEL", env_secure_level, 1);
++		g_free(env_secure_level);
 +	}
 +	if (env_lcctype) {
 +		setenv("LC_CTYPE", env_lcctype, 1);
-+		g_free(env_term);
++		g_free(env_lcctype);
 +	}
 +	if (env_lcnumeric) {
-+		setenv("LC_NUMERIC", env_lcnumeric, 1); 
-+		g_free(env_term);
++		setenv("LC_NUMERIC", env_lcnumeric, 1);
++		g_free(env_lcnumeric);
 +	}
 +	if (env_lctime) {
 +		setenv("LC_TIME", env_lctime, 1);
-+		g_free(env_term);
++		g_free(env_lctime);
 +	}
 +	if (env_lccollate) {
 +		setenv("LC_COLLATE", env_lccollate, 1);
-+		g_free(env_term);
++		g_free(env_lccollate);
 +	}
 +	if (env_lcmonetary) {
 +		setenv("LC_MONETARY", env_lcmonetary, 1);
-+		g_free(env_term);
++		g_free(env_lcmonetary);
 +	}
 +	if (env_browser) {
 +		setenv("BROWSER", env_browser, 1);
-+		g_free(env_term);
++		g_free(env_browser);
 +	}
 +	if (env_session_manager) {
 +		setenv("SESSION_MANAGER", env_session_manager, 1);
-+		g_free(env_term);
++		g_free(env_session_manager);
 +	}
 +	if (env_orbit_socketdir) {
 +		setenv("ORBIT_SOCKETDIR", env_orbit_socketdir, 1);
-+		g_free(env_term);
++		g_free(env_orbit_socketdir);
 +	}
 +	if (env_ftp_proxy) {
 +		setenv("ftp_proxy", env_ftp_proxy, 1);
-+		g_free(env_term);
++		g_free(env_ftp_proxy);
 +	}
 +	if (env_http_proxy) {
 +		setenv("http_proxy", env_http_proxy, 1);
-+		g_free(env_term);
++		g_free(env_http_proxy);
 +	}
 +	if (env_https_proxy) {
 +		setenv("https_proxy", env_https_proxy, 1);
-+		g_free(env_term);
++		g_free(env_https_proxy);
 +	}
 +	if (env_no_proxy) {
 +		setenv("no_proxy", env_no_proxy, 1);
-+		g_free(env_term);
++		g_free(env_no_proxy);
 +	}
  
  	/* Set the PATH to a reasonaly safe list of directories. */
  	setenv("PATH", "/usr/sbin:/usr/bin:/sbin:/bin:/root/bin", 1);
-@@ -2040,6 +2201,26 @@
+@@ -2074,6 +2271,26 @@ wrap(const char *user, const char *progr
  			g_free(env_xauthority);
  		}
  
@@ -224,3 +265,6 @@ diff -Naur usermode-1.113/userhelper.c usermode-1.113.tpg/userhelper.c
  		/* Open a session. */
  		retval = pam_open_session(data->pamh, 0);
  		if (retval != PAM_SUCCESS) {
+-- 
+1.6.4.2
+
