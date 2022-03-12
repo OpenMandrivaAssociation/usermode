@@ -3,7 +3,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.114
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -143,10 +143,10 @@ rm -f %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/@GETTEXT_PACKAGE@.mo \
 %{_bindir}/usermount
 %{_bindir}/userinfo
 %{_bindir}/userpasswd
-%{_mandir}/man1/usermount.1*
-%{_mandir}/man1/userinfo.1*
-%{_mandir}/man1/userpasswd.1*
-%{_mandir}/man1/pam-panel-icon.1*
+%doc %{_mandir}/man1/usermount.1*
+%doc %{_mandir}/man1/userinfo.1*
+%doc %{_mandir}/man1/userpasswd.1*
+%doc %{_mandir}/man1/pam-panel-icon.1*
 %{_bindir}/pam-panel-icon
 %{_datadir}/usermode
 %{_datadir}/pixmaps/*
@@ -154,9 +154,9 @@ rm -f %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/@GETTEXT_PACKAGE@.mo \
 
 %files -n %{name}-consoleonly -f %{name}.lang
 %attr(4755,root,root) %{_sbindir}/userhelper
-%{_mandir}/man8/userhelper.8*
 %{_bindir}/consolehelper
-%{_mandir}/man8/consolehelper.8*
+%doc %{_mandir}/man8/userhelper.8*
+%doc %{_mandir}/man8/consolehelper.8*
 %config(noreplace) %{_sysconfdir}/pam.d/simple_root_authen
 %config(noreplace) %{_sysconfdir}/pam.d/distro-simple-auth
 %config(noreplace) %{_sysconfdir}/pam.d/distro-console-auth
