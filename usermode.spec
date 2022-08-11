@@ -3,7 +3,7 @@
 Summary:	Graphical tools for certain user account management tasks
 Name:		usermode
 Version:	1.114
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPLv2+
 Group:		System/Configuration/Other
@@ -138,7 +138,7 @@ rm -f %{buildroot}%{_datadir}/locale/*/LC_MESSAGES/@GETTEXT_PACKAGE@.mo \
 %{_bindir}/consolehelper-qt
 
 %files gtk
-%{_mandir}/man8/consolehelper-gtk.8*
+%doc %{_mandir}/man8/consolehelper-gtk.8*
 %{_bindir}/consolehelper-gtk
 %{_bindir}/usermount
 %{_bindir}/userinfo
