@@ -31,6 +31,10 @@ Patch7:		usermode-1.101-stick.patch
 # https://qa.mandriva.com/show_bug.cgi?id=44632
 Patch10:	usermode-1.99-disable-session-restart.patch
 
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	autoconf
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
